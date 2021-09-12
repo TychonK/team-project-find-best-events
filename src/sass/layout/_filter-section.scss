@@ -1,4 +1,8 @@
 .filter {
+  width: 270px;
+  height: 40px;
+  padding-left: 655px;
+  padding-top: 214px;
   background-color: rgba(255, 255, 255, 0.2);
 }
 .filters {
@@ -8,18 +12,15 @@
   top: 167px;
   padding: 16px 0;
   @media screen and (min-width: 1920px) {
-    left: 30%;
+    right: 30%;
   }
 }
 .select {
-  background-color: #333;
-  color: var(--main-white-color);
-  width: 150px;
-  @media screen and (min-width: 360px) {
-    width: 200px;
-  }
+  background-color: rgb(139, 98, 98);
+  color: rgba(81, 139, 74, 0.2);
+  width: 270px;
 
-  border: 1px solid var(--main-black-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   backdrop-filter: blur(20px);
   cursor: pointer;
@@ -27,7 +28,7 @@
 select option:hover,
 select option:focus,
 select option:checked {
-  background-color: var(--secondary-active-color);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .options {
   border-radius: 10px;

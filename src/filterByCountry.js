@@ -1,4 +1,13 @@
 import template from '../templates/option.hbs';
+export default {
+  API_KEY: '???',
+  language: 'en-US',
+async getCountries() {
+    const response = await fetch("https://app.ticketmaster.com/discovery/v2/json?country&apikey={apikey}");
+     if (response.ok) {
+      return await response.json();
+    }
+
 
     let filters = document.querySelector('.filters');
     let select = document.querySelector('.select-js');
