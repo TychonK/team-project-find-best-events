@@ -10,7 +10,7 @@ let foundedEvent = '';
 
 const refs = {
     input: document.querySelector('.eventInput'),
-    container: // (путь к контейнеру)
+    container: // (путь к контейнеру)  
 
 };
 
