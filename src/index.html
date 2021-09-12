@@ -30,8 +30,23 @@
         placeholder="Choose country"
       />
     </div>
+
+    <!-- Контейнер для галереи -->
+    <ul class="events events-container"></ul>
+
+
+    <!-- Пока кнопка, потом заменить на перечень стр -->
+    <button
+      type="button"
+      class="btn-load-more"
+      data-action="load-more">
+
+      <span class="label">Show more</span>
+    </button>
+
+    
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/example.html"></include>
+    <!-- <include src="./partials/example.html"></include> -->
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
