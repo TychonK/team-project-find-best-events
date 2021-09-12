@@ -36,3 +36,19 @@ async function onFilterChooseAndRenderPages(e) {
   if (e.target.value === 'Choose country')  {
     return;
   }
+
+    }
+    let main = document.querySelector('.main.js');
+    main.dataset.page = 'filtering';
+    // renderByCountriFilter(e.target.value, 1);
+
+    export function onHomeClickHandler() {
+  refs.divFilter.classList.remove('visually-hidden');
+  status = 'home';
+}
+export function onMyLibraryClickHandler() {
+    status = 'library';
+    filters.classList.add('visually-hidden');
+}
+
+export {getCountries}
