@@ -1,6 +1,6 @@
 import template from '../templates/option.hbs';
 export default {
-  API_KEY: '???',
+  API_KEY: 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M',
   language: 'en-US',
 async getCountries() {
     const response = await fetch("https://app.ticketmaster.com/discovery/v2/json?country&apikey={apikey}");
@@ -52,7 +52,7 @@ async function onFilterChooseAndRenderPages(e) {
     // renderByCountriFilter(e.target.value, 1);
 
     export function onHomeClickHandler() {
-  refs.divFilter.classList.remove('visually-hidden');
+  filters.classList.remove('visually-hidden');
   status = 'home';
 }
 export function onMyLibraryClickHandler() {
