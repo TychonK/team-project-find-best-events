@@ -77,7 +77,7 @@ async function renderByCountriFilter(country, page) {
   }
 }
   
-
+let status = 'home';
    export function onHomeClickHandler() {
   filters.classList.remove('visually-hidden');
   status = 'home';
