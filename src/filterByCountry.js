@@ -58,13 +58,25 @@ async function onFilterChooseAndRenderPages(e) {
     }
     let main = document.querySelector('.main.js');
     main.dataset.page = 'filtering';
-    // renderByCountriFilter(e.target.value, 1);
+    renderByCountriFilter(e.target.value, 1);
 async function renderByCountriFilter(country, page) {
      try {
     if (page === 1) {
-      refs.galleryList.innerHTML = '';
+      refs.events.innerHTML = ''; //change tefs
+       }
+       const array = await getCountries();
+       const countryId = array.countries.find(el => el.name === country).id;
+       const results = await fetchAPI.sortByCountry(countryId, page);
+       if (page > results.total_pages) {
+      какойто спинер.removeSpinner(); // change or ad function spinner
+      return;
     }
+    render(results.results); // link for render
+  } catch (e) {
+    console.log('this is error:', e);
   }
+}
+  
 
    export function onHomeClickHandler() {
   filters.classList.remove('visually-hidden');
