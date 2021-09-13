@@ -1,6 +1,6 @@
 import template from '../src/templates/option.hbs';
-import { refs } from './index.js;
-import EventsApiService from './api-servise.js';
+import { refs } from './index.js';
+import EventsApiService from './js/api-service';
 
 
 
