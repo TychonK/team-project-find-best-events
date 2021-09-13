@@ -16,7 +16,10 @@ import EventsApiService from './js/api-service';
 const refs = {
     input: document.querySelector('.eventInput'),
     container: document.querySelector('.events-container'),
-    loadMoreBtn: document.querySelector('[data-action="load-more"]')    // заменить!!!
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+    filters: document.querySelector('.filters'),
+    select: document.querySelector('.select-js')
+        // заменить!!!
 };
 
 const eventsApiService = new EventsApiService();

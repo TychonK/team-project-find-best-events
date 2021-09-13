@@ -1,4 +1,9 @@
 import template from '../src/templates/option.hbs';
+import { refs } from './index.js;
+import EventsApiService from './api-servise.js';
+
+
+
 export default {
   API_KEY: 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M',
   language: 'en-US',
@@ -9,7 +14,7 @@ export default {
     }
   },
   async sortByCountry(country, page = 1) {
-    const response = await fetch('');
+    const response = await fetch('`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.foundedEvent}&size=12&page=${this.page}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M');
     if (response.ok) {
       return await response.json();
     }
@@ -18,11 +23,11 @@ export default {
 }
 
 
-    let filters = document.querySelector('.filters');
-    let select = document.querySelector('.select-js');
+    // let filters = document.querySelector('.filters');
+    // let select = document.querySelector('.select-js');
 
      async function getCountries() {
-        const countries = await fetchApi.getCountries();
+        const countries = await EventsApiService.getCountries();
         return countries;
     }
 
@@ -48,7 +53,7 @@ export default {
         
 }
 
-filters.addEventListener('change', onFilterChooseAndRenderPages);
+refs.filters.addEventListener('change', onFilterChooseAndRenderPages);
 async function onFilterChooseAndRenderPages(e) {
 
   if (e.target.value === 'Choose country')  {
@@ -56,17 +61,17 @@ async function onFilterChooseAndRenderPages(e) {
   }
 
     }
-    let main = document.querySelector('.main-js');
-    main.dataset.page = 'filtering';
+    
+    refs.container.dataset.page = 'filtering';
     renderByCountriFilter(e.target.value, 1);
 async function renderByCountriFilter(country, page) {
      try {
     if (page === 1) {
-      refs.events.innerHTML = ''; //change tefs
+      refs.container.innerHTML = ''; //change tefs?
        }
        const array = await getCountries();
        const countryId = array.countries.find(el => el.name === country).id;
-       const results = await fetchAPI.sortByCountry(countryId, page);
+       const results = await EventsApiService.sortByCountry(countryId, page);
        if (page > results.total_pages) {
       refs.spiner.removeSpinner(); // change or ad function spinner
       return;
