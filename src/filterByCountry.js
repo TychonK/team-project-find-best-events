@@ -3,7 +3,7 @@ export default {
   API_KEY: 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M',
   language: 'en-US',
   async getCountries() {
-    const response = await fetch("https://app.ticketmaster.com/discovery/v2/json?country&apikey={apikey}");
+    const response = await fetch("https://app.ticketmaster.eu/mfxapi/v2/countries");
     if (response.ok) {
       return await response.json();
     }
