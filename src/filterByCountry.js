@@ -3,11 +3,18 @@ export default {
   API_KEY: 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M',
   language: 'en-US',
   async getCountries() {
-    const response = await fetch("https://app.ticketmaster.eu/mfxapi/v2/countries");
+    const response = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?country&apikey={apikey}");
+    if (response.ok) {
+      return await response.json();
+    }
+  },
+  async sortByCountry(country, page = 1) {
+    const response = await fetch('');
     if (response.ok) {
       return await response.json();
     }
   }
+  
 }
 
 
@@ -53,11 +60,11 @@ async function onFilterChooseAndRenderPages(e) {
     main.dataset.page = 'filtering';
     // renderByCountriFilter(e.target.value, 1);
 
-    function onHomeClickHandler() {
+   export function onHomeClickHandler() {
   filters.classList.remove('visually-hidden');
   status = 'home';
 }
- function onMyLibraryClickHandler() {
+ export function onMyLibraryClickHandler() {
     status = 'library';
     filters.classList.add('visually-hidden');
 }
