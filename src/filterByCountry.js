@@ -43,8 +43,8 @@ export default {
     const array = dataForGenerationOfOptions.countries.map(el => el);
     array.unshift(emptyObj);
    const markup = array.map(el => template({ el }));
-   refs.select.innerHTML = '';
-        refs.select.insertAdjacentHTML('beforeend', markup);
+   select.innerHTML = '';
+  select.insertAdjacentHTML('beforeend', markup);
         
 }
 
