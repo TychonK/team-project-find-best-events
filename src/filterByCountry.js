@@ -56,7 +56,7 @@ async function onFilterChooseAndRenderPages(e) {
   }
 
     }
-    let main = document.querySelector('.main.js');
+    let main = document.querySelector('.main-js');
     main.dataset.page = 'filtering';
     renderByCountriFilter(e.target.value, 1);
 async function renderByCountriFilter(country, page) {
