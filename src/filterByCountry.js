@@ -68,7 +68,7 @@ async function renderByCountriFilter(country, page) {
        const countryId = array.countries.find(el => el.name === country).id;
        const results = await fetchAPI.sortByCountry(countryId, page);
        if (page > results.total_pages) {
-      какойто спинер.removeSpinner(); // change or ad function spinner
+      refs.spiner.removeSpinner(); // change or ad function spinner
       return;
     }
     render(results.results); // link for render
