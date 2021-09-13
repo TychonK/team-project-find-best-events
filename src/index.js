@@ -7,7 +7,7 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 import EventsApiService from './js/api-service';
-
+import './js/modal';
 
 // let foundedEvent = '';  // перенесла в файл api-service.js
 
