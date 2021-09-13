@@ -61,16 +61,21 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #200d1d60;
 }
 
 .modal__content {
+  width: 930px;
+  height: 1023px;
+  padding: 60px 30px;
+  background-color: #fff2fd;
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   -webkit-transition: -webkit-transform var(--animation-duration) var(--timing-function);
   transition: -webkit-transform var(--animation-duration) var(--timing-function);
   transition: transform var(--animation-duration) var(--timing-function);
   transition: transform var(--animation-duration) var(--timing-function), -webkit-transform var(--animation-duration) var(--timing-function);
+  border-radius: 30% 0 30% 0;
 }
 
 .modal.is-open .modal__content {
@@ -88,8 +93,8 @@
 
 .modal__button {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 30px;
+  right: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,8 +104,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 48px;
-  height: 48px;
   padding: 0;
   margin: 0;
   border: none;
@@ -112,6 +115,8 @@
   transition: background-color var(--animation-duration) var(--timing-function);
   outline: none;
   background-image: url("../images/close.svg");
+  width: 25px;
+  height: 25px;
   background-position: center;
   background-size: 60%;
   background-repeat: no-repeat;
@@ -119,6 +124,37 @@
 
 .modal__button:hover,
 .modal__button:focus {
-  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  background-color: rgba(203, 202, 207, 0.568);
+}
+
+.modal__image--little {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50%;
+  width: 132px;
+  height: 132px;
+  background-image: url("../images/demo.jpg");
+  background-size: cover;
+}
+
+.modal-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0px;
+  padding: 0px;
+  margin-left: -60px;
+  margin-top: -60px;
+}
+
+.modal-info__item {
+  -ms-flex-preferred-size: calc((100% - 60px * 2) / 2);
+      flex-basis: calc((100% - 60px * 2) / 2);
+  margin-left: 60px;
+  margin-top: 60px;
 }
 /*# sourceMappingURL=main.css.map */
