@@ -59,6 +59,12 @@ async function onFilterChooseAndRenderPages(e) {
     let main = document.querySelector('.main.js');
     main.dataset.page = 'filtering';
     // renderByCountriFilter(e.target.value, 1);
+async function renderByCountriFilter(country, page) {
+     try {
+    if (page === 1) {
+      refs.galleryList.innerHTML = '';
+    }
+  }
 
    export function onHomeClickHandler() {
   filters.classList.remove('visually-hidden');
