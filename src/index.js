@@ -9,18 +9,27 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 import EventsApiService from './js/api-service';
+
+import './js/modal';
+
 import eventsCardTpl from './templates/events-card.hbs';
+
 
 // let foundedEvent = '';  // перенесла в файл api-service.js
 
 const refs = {
     input: document.querySelector('.eventInput'),
     container: document.querySelector('.events-container'),
+
+
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
         // заменить!!!
+
 };
+
+ 
 
 const eventsApiService = new EventsApiService();
 
