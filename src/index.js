@@ -4,7 +4,7 @@ import './filterByCountry.js';
 
 import debounce from 'lodash.debounce';
 
-import { info, error } from '@pnotify/core';
+import { info, error, alert } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
@@ -42,6 +42,7 @@ function onSearch(e) {
     console.log(searchQuery)
     if (searchQuery === "") {
         document.querySelector(".paginator").innerHTML = "";
+        alert({text: "Please, specify you query"})
         return;
     }
     paginator();
