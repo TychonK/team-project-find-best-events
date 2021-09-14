@@ -5,19 +5,21 @@ export default class EventsApiService {
     }
 
     fetchEvents() {
-        console.log(this);
         const url =
             `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.foundedEvent}&size=12&page=${this.page}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`;
 
-        fetch(url)
+        return fetch(url)
             .then(r => r.json())
             .then(data => {
-                this.incrementPage();
+                this.incrementPage(data.page.totalPages);
+                // console.log(data);
+
+                return data._embedded.events;
             });
     }
 
-    incrementPage() {
-        this.page += 1;
+    incrementPage(maxPages) {
+        this.page < maxPages ? this.page += 1 : this.page = maxPages;
     }
 
     resetPage() {
