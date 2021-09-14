@@ -9,7 +9,7 @@ let countriesArr = ['United States Of America', 'Andorra', 'Anguilla', 'Argentin
 
 // let sel = document.getElementById('input-country');
 // let fragment = document.createDocumentFragment();
-// countries.forEach(function(countrie, index) {
+// countriesArr.forEach(function(countrie, index) {
 //     let opt = document.createElement('option');
 //     opt.innerHTML = countrie;
 //     opt.value = countrie;
