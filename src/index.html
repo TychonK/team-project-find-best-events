@@ -16,7 +16,7 @@
   
 
   <body>
-     <header>
+    <header>
     <include src="./partials/header.html"></include>
     </header>
     <div>
@@ -28,14 +28,15 @@
         id="input-event"
         placeholder="Start searching"
       />
-      <input
+      <!-- <input
         class="countryInput"
         type="text"
         name="country"
         id="input-country"
         placeholder="Choose country"
-      />
+      /> -->
     </div>
+  <select id="input-country"></select>
 
     <!-- Контейнер для галереи -->
     <ul class="events events-container"></ul>
@@ -51,10 +52,13 @@
     </button>
 
     
+
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
 
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-    <script src="./index.js"></script>
+   <include src="./partials/filter.html"></include>
+    <script src="./filterByCountry.js"></script>
+      <script src="./index.js"></script>
   </body>
 </html>

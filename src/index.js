@@ -1,4 +1,6 @@
+
 import './sass/main.scss';
+import './filterByCountry.js';
 
 import debounce from 'lodash.debounce';
 
@@ -14,7 +16,10 @@ import eventsCardTpl from './templates/events-card.hbs';
 const refs = {
     input: document.querySelector('.eventInput'),
     container: document.querySelector('.events-container'),
-    loadMoreBtn: document.querySelector('[data-action="load-more"]')    // заменить!!!
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+    filters: document.querySelector('.filters-js'),
+    select: document.querySelector('.select-js')
+        // заменить!!!
 };
 
 const eventsApiService = new EventsApiService();
@@ -80,5 +85,8 @@ function resetSearch() {
 //         closerHover: true,
 //     });
 // }
+
+
+
 
 
