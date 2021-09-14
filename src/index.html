@@ -32,13 +32,13 @@
         id="input-event"
         placeholder="Start searching"
       />
-      <input
+      <!-- <input
         class="countryInput"
         type="text"
         name="country"
         id="input-country"
         placeholder="Choose country"
-      />
+      /> -->
     </div>
   
 
@@ -61,7 +61,8 @@
 
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-  <script src="./filterByCountry.js"></script>
-    <script src="./index.js"></script>
+   <include src="./partials/filter.html"></include>
+    <script src="./filterByCountry.js"></script>
+      <script src="./index.js"></script>
   </body>
 </html>

@@ -1,20 +1,37 @@
-import template from '../src/templates/option.hbs';
 import { refs } from './index.js';
 import EventsApiService from './js/api-service';
+import template from './templates/option.hbs';
 
+
+let countriesArr = ['United States Of America', 'Andorra', 'Anguilla', 'Argentina', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Barbados', 'Belgium', 'Bermuda', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Dominican Republic', 'Ecuador', 'Estonia', 'Faroe Islands', 'Finland', 'France', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Great Britain', 'Greece', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Korea', 'Latvia', 'Lebanon', 'Lithuania', 'Luxembourg', 'Malaysia', 'Malta', 'Mexico', 'Monaco', 'Montenegro', 'Morocco', 'Netherlands', 'Netherlands Antilles', 'New Zealand', 'Northern Ireland', 'Norway', 'Peru', 'Poland', 'Portugal', 'Romania', 'Russian Federation', 'Saint Lucia', 'Saudi Arabia', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'Thailand', 'Trinidad and Tobago', 'Turkey', 'Ukraine', 'United Arab Emirates', 'Uruguay', 'Venezuela']
+
+   
+
+// let sel = document.getElementById('input-country');
+// let fragment = document.createDocumentFragment();
+// countries.forEach(function(countrie, index) {
+//     let opt = document.createElement('option');
+//     opt.innerHTML = countrie;
+//     opt.value = countrie;
+//     fragment.appendChild(opt);
+// });
+// sel.appendChild(fragment);
+// console.log(sel);
 
 
 export default {
-  API_KEY: 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M',
+  
   language: 'en-US',
   async getCountries() {
-    const response = await fetch("https://app.ticketmaster.com/discovery/v2/events.json?country&apikey={apikey}");
+    const response = await countriesArr;
     if (response.ok) {
       return await response.json();
     }
+  console.log(getCountries())
+
   },
   async sortByCountry(country, page = 1) {
-    const response = await fetch('`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.foundedEvent}&size=12&page=${this.page}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M');
+    const response = await countriesArr;
     if (response.ok) {
       return await response.json();
     }
@@ -23,11 +40,11 @@ export default {
 }
 
 
-    // let filters = document.querySelector('.filters');
-    // let select = document.querySelector('.select-js');
+//     // let filters = document.querySelector('.filters');
+//     // let select = document.querySelector('.select-js');
 
      async function getCountries() {
-        const countries = await EventsApiService.getCountries();
+        const countries = countriesArr;
         return countries;
     }
 

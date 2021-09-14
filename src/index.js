@@ -17,7 +17,7 @@ const refs = {
     input: document.querySelector('.eventInput'),
     container: document.querySelector('.events-container'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-    filters: document.querySelector('.filters'),
+    filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
         // заменить!!!
 };
