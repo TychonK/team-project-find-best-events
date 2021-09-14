@@ -14,8 +14,10 @@ import './js/modal';
 const refs = {
     input: document.querySelector('.eventInput'),
     container: document.querySelector('.events-container'),
-    loadMoreBtn: document.querySelector('[data-action="load-more"]')    // заменить!!!
+    loadMoreBtn: document.querySelector('[data-action="load-more"]'),  
 };
+
+ 
 
 const eventsApiService = new EventsApiService();
 

@@ -42,14 +42,6 @@
   transform: scale(1);
 }
 
-.modal__image {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 100vh;
-  max-width: 100vw;
-}
-
 .modal__button {
   position: absolute;
   top: 30px;
@@ -95,13 +87,22 @@
   background-size: cover;
 }
 
+.modal__image--big {
+  display: block;
+  max-width: 60px;
+  max-height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .modal-info {
+  border: 5px solid rgb(19, 131, 28);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0px;
   padding: 0px;
   margin-left: -60px;
   margin-top: -60px;
+  border: tan;
 }
 
 .modal-info__item {

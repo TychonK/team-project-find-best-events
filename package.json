@@ -26,6 +26,8 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "@pnotify/core": "^5.2.0"
+    "@pnotify/core": "^5.2.0",
+    "inde": "^1.0.0",
+    "index": "^0.4.0"
   }
 }

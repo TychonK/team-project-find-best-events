@@ -52,27 +52,51 @@
       <div class="modal__overlay"></div>
     
       <div class="modal__content">
-
     <button type="button" class="modal__button" data-action="close-modal"> </button>
-
         <div class="modal__image--little">     
           <img class="modal__image" src="" alt="" />
         </div>
         
         <div class="modal-info "> 
-          <div class="modal__image--big modal-info__item">
-          <img class="modal__image" src="" alt="" /></div>
+          <div class="modal__image modal-info__item">
+          <!-- <img class="modal__image--big" src="./images/demo.jpg" alt="" href=""  /></div> -->
           </div>
-          <div class="modal-info__list modal-info__item""> </div>
+          <div class="modal-info__list modal-info__item"> 
+            <!-- инфо в эту разметку будет рендориться -->
+            <ul>
+              <li>
+                <h3>INFO</h3>
+                <p>Atlas Weekend is the largest music festival
+                in Ukraine.More than 200 artists will create
+                a proper music festival atmosphere on 10 stages</p>
+              </li>
+              <li>
+                <h3>WHEN</h3>
+                <p>2021-06-09</p>
+                <p>20:00 (Kyiv/Ukraine)</p>
+              </li>
+              <li>
+                <h3>WHERE</h3>
+                <p></p>
+              </li>
+              <li>
+                <h3>WHO</h3>
+                <p></p>
+              </li>
+              <li>
+                <h3>PRICES</h3>
+                <!-- это разметка рендориться -->
+                <p></p>
+              </li>
+            </ul>
+          </div> 
         </div>
+        <button type="button">MORE FROM THIS AUTHOR</button>
         </div>
-   
-  
       </div>
     
-    
-    
-    </div>
+    <!-- конец модалки -->
+    <!-- </div> -->
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <!-- <include src="./partials/example.html"></include> -->
 
