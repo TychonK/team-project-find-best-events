@@ -14,13 +14,25 @@ import eventsCardTpl from './templates/events-card.hbs';
 // let foundedEvent = '';  // перенесла в файл api-service.js
 
 const refs = {
-    input: document.querySelector('.eventInput'),
+    input: document.querySelector('#input-event'),
+    countrySelect: document.getElementById('input-country'),
     container: document.querySelector('.events-container'),
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
         // заменить!!!
 };
+
+const countriesArr = ['United States Of America US', 'Andorra AD', 'Anguilla AI', 'Argentina AR', 'Australia AU', 'Austria AT', 'Azerbaijan AZ', 'Bahamas BS', 'Bahrain BH', 'Barbados BB', 'Belgium BE', 'Bermuda BM', 'Brazil BR', 'Bulgaria BG', 'Canada CA', 'Chile CL', 'China CN', 'Colombia CO', 'Costa Rica CR', 'Croatia HR', 'Cyprus CY', 'Czech Republic CZ', 'Denmark DK', 'Dominican Republic DO', 'Ecuador EC', 'Estonia EE', 'Faroe Islands FO', 'Finland FI', 'France FR', 'Georgia GE', 'Germany DE', 'Ghana GH', 'Gibraltar GI', 'Great Britain GB', 'Greece GR', 'Hong Kong HK', 'Hungary HU', 'Iceland IS', 'India IN', 'Ireland IE', 'Israel IL', 'Italy IT', 'Jamaica JM', 'Japan JP', 'Korea KR', 'Latvia LV', 'Lebanon LB', 'Lithuania LT', 'Luxembourg LU', 'Malaysia MY', 'Malta MT', 'Mexico MX', 'Monaco MC', 'Montenegro ME', 'Morocco MA', 'Netherlands NL', 'Netherlands Antilles AN', 'New Zealand NZ', 'Northern Ireland ND', 'Norway NO', 'Peru PE', 'Poland PL', 'Portugal PT', 'Romania RO', 'Russian Federation RU', 'Saint Lucia LC', 'Saudi Arabia SA', 'Serbia RS', 'Singapore SG', 'Slovakia SK', 'Slovenia SI', 'South Africa ZA', 'Spain ES', 'Sweden SE', 'Switzerland CH', 'Taiwan TW', 'Thailand TH', 'Trinidad and Tobago TT', 'Turkey TR', 'Ukraine UA', 'United Arab Emirates AE', 'Uruguay UY', 'Venezuela VE']
+ 
+const fragment = document.createDocumentFragment();
+countriesArr.forEach(function(countrie, index) {
+    let opt = document.createElement('option');
+    opt.innerHTML = countrie;
+    opt.value = countrie;
+    fragment.appendChild(opt);
+});
+refs.countrySelect.appendChild(fragment);
 
 const eventsApiService = new EventsApiService();
 
@@ -30,10 +42,17 @@ const eventsApiService = new EventsApiService();
 // }, 500));
 
 refs.input.addEventListener("input", debounce(onSearch, 500));
+refs.countrySelect.addEventListener("input", onSelect)
 //refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
 
 let searchQuery;
-let selectedCountry;
+let selectedCountry = "US";
+
+function onSelect(e) {
+    e.preventDefault();
+    selectedCountry = e.target.value.slice(-2);
+    console.log(selectedCountry)
+}
 
 function onSearch(e) {
     e.preventDefault(); // чтоб при сабмите стр не перезагружалась
@@ -66,7 +85,10 @@ function paginator() {
         dataSource: function (done) {
             $.ajax({
                 type: 'GET',
-                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+                beforeSend: function(){
+                    refs.container.innerHTML = "<div class='while-searching_text'>Searching events...</div>";
+                },
+                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
                 success: function (response) {
                     done(response._embedded.events);
                 }
