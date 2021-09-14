@@ -29,29 +29,67 @@ const eventsApiService = new EventsApiService();
 //     onSearch();
 // }, 500));
 
-refs.input.addEventListener('input', debounce(onSearch, 500));
-refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
+refs.input.addEventListener("input", debounce(onSearch, 500));
+//refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
 
-function onSearch(ev) {
-    ev.preventDefault(); // чтоб при сабмите стр не перезагружалась
+let searchQuery;
+let selectedCountry;
+
+function onSearch(e) {
+    e.preventDefault(); // чтоб при сабмите стр не перезагружалась
     resetSearch();
+    searchQuery = e.target.value;
+    console.log(searchQuery)
+    if (searchQuery === "") {
+        document.querySelector(".paginator").innerHTML = "";
+        return;
+    }
+    paginator();
 
-    eventsApiService.event = refs.input.value;  // запис.значение, которое получаем при помощи сетера
-    eventsApiService.resetPage();       
+    // eventsApiService.event = refs.input.value;  // запис.значение, которое получаем при помощи сетера
+    // eventsApiService.resetPage();       
 
-    //вставить fetch fetchEvent(foundedEvent)
-    eventsApiService.fetchEvents()
-        .then(markupEvents);
+    // //вставить fetch fetchEvent(foundedEvent)
+    // eventsApiService.fetchEvents()
+    //     .then(markupEvents);
 }
 
 // для кнопки Show More
-function onLoadMore() {
-    eventsApiService.fetchEvents()
-        .then(markupEvents);
+// function onLoadMore() {
+//     eventsApiService.fetchEvents()
+//         .then(markupEvents);
+// }
+
+function paginator() {
+    $('.paginator').pagination({
+        dataSource: function (done) {
+            $.ajax({
+                type: 'GET',
+                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+                success: function (response) {
+                    done(response._embedded.events);
+                }
+            });
+        },
+        pageSize: 24,
+        locator: ".events",
+        totalNumberLocator: function (response) {
+            return response._embedded.events.length;
+        },
+        
+        prevText: "<",
+        nextText: ">",
+        callback: function (data, pagination) {
+            // template method of yourself
+            console.log(pagination)
+            refs.container.innerHTML = "";
+            refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(data))
+        }
+    })
 }
 
-function markupEvents(events) {
-    refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(events));
+function markupEvents(e) {
+    refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(e));
 }
 
 function resetSearch() {
