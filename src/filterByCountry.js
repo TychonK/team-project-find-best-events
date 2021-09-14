@@ -31,7 +31,7 @@ export default {
 
   },
   async sortByCountry(country, page = 1) {
-    const response = await countriesArr;
+    const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?countryCode=${opt.value}S&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`);
     if (response.ok) {
       return await response.json();
     }
