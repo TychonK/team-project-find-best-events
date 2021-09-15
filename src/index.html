@@ -20,52 +20,91 @@
 
   <body>
     <header>
-    <include src="./partials/header.html"></include>
+
+      <include src="./partials/header.html"></include>
+
     </header>
-    <div>
-      <h1 class="title">FIND BEST EVENTS AROUND THE WORLD</h1>
-      <input
-        class="eventInput"
-        type="text"
-        name="event"
-        id="input-event"
-        placeholder="Start searching"
-      />
-      <!-- <input
-        class="countryInput"
-        type="text"
-        name="country"
-        id="input-country"
-        placeholder="Choose country"
-      /> -->
-    </div>
-  <select id="input-country"></select>
+    <main>
+       
+        <input
+          class="eventInput"
+          type="text"
+          name="event"
+          id="input-event"
+          placeholder="Start searching"
+        />
+        <select id="input-country"></select>
 
     <!-- Контейнер для галереи -->
     <section class="container">
+      <div class="searching"></div>
       <ul class="events events-container"></ul>
     </section>
 
     <div class="paginator">
     </div>
-
-    <!-- Пока кнопка, потом заменить на перечень стр -->
-    <!-- <button
-      type="button"
-      class="btn-load-more"
-      data-action="load-more">
-
-      <span class="label">Show more</span>
-    </button> -->
-
     
+    </main>
 
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-
+<!-- модалка -->
+    <!-- кнопка временная для открития модалки -->
+    
+    <button type="button" class="open-btn" data-action="close-modal"> Открыть модалку</button>
+    
+    <div class="modal js-modal ">
+      <div class="modal__overlay"></div>
+    
+      <div class="modal__content">
+    <button type="button" class="modal__button" data-action="close-modal"> </button>
+        <div class="modal__image--little">     
+          <img class="modal__image" src="" alt="" />
+        </div>
+        
+        <div class="modal-info "> 
+          <div class="modal__image modal-info__item">
+          <!-- <img class="modal__image--big" src="./images/demo.jpg" alt="" href=""  /></div> -->
+          </div>
+          <div class="modal-info__list modal-info__item"> 
+            <!-- инфо в эту разметку будет рендориться -->
+            <ul>
+              <li>
+                <h3>INFO</h3>
+                <p>Atlas Weekend is the largest music festival
+                in Ukraine.More than 200 artists will create
+                a proper music festival atmosphere on 10 stages</p>
+              </li>
+              <li>
+                <h3>WHEN</h3>
+                <p>2021-06-09</p>
+                <p>20:00 (Kyiv/Ukraine)</p>
+              </li>
+              <li>
+                <h3>WHERE</h3>
+                <p></p>
+              </li>
+              <li>
+                <h3>WHO</h3>
+                <p></p>
+              </li>
+              <li>
+                <h3>PRICES</h3>
+                <!-- это разметка рендориться -->
+                <p></p>
+              </li>
+            </ul>
+          </div> 
+        </div>
+        <button type="button">MORE FROM THIS AUTHOR</button>
+        </div>
+      </div>
+    
+    <!-- конец модалки -->
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-   <include src="./partials/filter.html"></include>
+    <!-- <include src="./partials/filter.html"></include> -->
+    <script src="./index.js"></script>
+    <script src="./js/modal.js"></script>
     <script src="./filterByCountry.js"></script>
-      <script src="./index.js"></script>
+    
   </body>
 </html>
