@@ -20,49 +20,42 @@
 
   <body>
     <header>
-    <include src="./partials/header.html"></include>
+
+      <include src="./partials/header.html"></include>
+
     </header>
-    <div>
-      <h1 class="title">FIND BEST EVENTS AROUND THE WORLD</h1>
-      <input
-        class="eventInput"
-        type="text"
-        name="event"
-        id="input-event"
-        placeholder="Start searching"
-      />
-      <!-- <input
-        class="countryInput"
-        type="text"
-        name="country"
-        id="input-country"
-        placeholder="Choose country"
-      /> -->
-    </div>
-  <select id="input-country"></select>
+    <main>
+       
+        <input
+          class="eventInput"
+          type="text"
+          name="event"
+          id="input-event"
+          placeholder="Start searching"
+        />
 
-    <!-- Контейнер для галереи -->
-    <ul class="events events-container"></ul>
+        <select id="input-country"></select>
 
+        <!-- Контейнер для галереи -->
+        <div class="searching"></div>
+        <ul class="events events-container"></ul>
 
-    <div class="paginator">
-    
-    </div>
-    <!-- Пока кнопка, потом заменить на перечень стр -->
-    <!-- <button
-      type="button"
-      class="btn-load-more"
-      data-action="load-more">
+        <div class="paginator">
+        
+        </div>
+      
+        <!-- Пока кнопка, потом заменить на перечень стр -->
+        <!-- <button
+          type="button"
+          class="btn-load-more"
+          data-action="load-more">
 
       <span class="label">Show more</span>
 
-    </button>
-
+      </button>
+      </button> -->
     
-
-    </button> -->
-
-    
+    </main>
 
 
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
@@ -121,8 +114,9 @@
     <!-- конец модалки -->
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-   <include src="./partials/filter.html"></include>
+    <include src="./partials/filter.html"></include>
+    <script src="./index.js"></script>
     <script src="./filterByCountry.js"></script>
-      <script src="./index.js"></script>
+    
   </body>
 </html>
