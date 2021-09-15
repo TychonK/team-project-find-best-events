@@ -23,7 +23,7 @@ const refs = {
         // заменить!!!
 };
 
-const countriesArr = ['United States Of America US', 'Andorra AD', 'Anguilla AI', 'Argentina AR', 'Australia AU', 'Austria AT', 'Azerbaijan AZ', 'Bahamas BS', 'Bahrain BH', 'Barbados BB', 'Belgium BE', 'Bermuda BM', 'Brazil BR', 'Bulgaria BG', 'Canada CA', 'Chile CL', 'China CN', 'Colombia CO', 'Costa Rica CR', 'Croatia HR', 'Cyprus CY', 'Czech Republic CZ', 'Denmark DK', 'Dominican Republic DO', 'Ecuador EC', 'Estonia EE', 'Faroe Islands FO', 'Finland FI', 'France FR', 'Georgia GE', 'Germany DE', 'Ghana GH', 'Gibraltar GI', 'Great Britain GB', 'Greece GR', 'Hong Kong HK', 'Hungary HU', 'Iceland IS', 'India IN', 'Ireland IE', 'Israel IL', 'Italy IT', 'Jamaica JM', 'Japan JP', 'Korea KR', 'Latvia LV', 'Lebanon LB', 'Lithuania LT', 'Luxembourg LU', 'Malaysia MY', 'Malta MT', 'Mexico MX', 'Monaco MC', 'Montenegro ME', 'Morocco MA', 'Netherlands NL', 'Netherlands Antilles AN', 'New Zealand NZ', 'Northern Ireland ND', 'Norway NO', 'Peru PE', 'Poland PL', 'Portugal PT', 'Romania RO', 'Russian Federation RU', 'Saint Lucia LC', 'Saudi Arabia SA', 'Serbia RS', 'Singapore SG', 'Slovakia SK', 'Slovenia SI', 'South Africa ZA', 'Spain ES', 'Sweden SE', 'Switzerland CH', 'Taiwan TW', 'Thailand TH', 'Trinidad and Tobago TT', 'Turkey TR', 'Ukraine UA', 'United Arab Emirates AE', 'Uruguay UY', 'Venezuela VE']
+const countriesArr = ['Choose country...', 'United States Of America US', 'Andorra AD', 'Anguilla AI', 'Argentina AR', 'Australia AU', 'Austria AT', 'Azerbaijan AZ', 'Bahamas BS', 'Bahrain BH', 'Barbados BB', 'Belgium BE', 'Bermuda BM', 'Brazil BR', 'Bulgaria BG', 'Canada CA', 'Chile CL', 'China CN', 'Colombia CO', 'Costa Rica CR', 'Croatia HR', 'Cyprus CY', 'Czech Republic CZ', 'Denmark DK', 'Dominican Republic DO', 'Ecuador EC', 'Estonia EE', 'Faroe Islands FO', 'Finland FI', 'France FR', 'Georgia GE', 'Germany DE', 'Ghana GH', 'Gibraltar GI', 'Great Britain GB', 'Greece GR', 'Hong Kong HK', 'Hungary HU', 'Iceland IS', 'India IN', 'Ireland IE', 'Israel IL', 'Italy IT', 'Jamaica JM', 'Japan JP', 'Korea KR', 'Latvia LV', 'Lebanon LB', 'Lithuania LT', 'Luxembourg LU', 'Malaysia MY', 'Malta MT', 'Mexico MX', 'Monaco MC', 'Montenegro ME', 'Morocco MA', 'Netherlands NL', 'Netherlands Antilles AN', 'New Zealand NZ', 'Northern Ireland ND', 'Norway NO', 'Peru PE', 'Poland PL', 'Portugal PT', 'Romania RO', 'Russian Federation RU', 'Saint Lucia LC', 'Saudi Arabia SA', 'Serbia RS', 'Singapore SG', 'Slovakia SK', 'Slovenia SI', 'South Africa ZA', 'Spain ES', 'Sweden SE', 'Switzerland CH', 'Taiwan TW', 'Thailand TH', 'Trinidad and Tobago TT', 'Turkey TR', 'Ukraine UA', 'United Arab Emirates AE', 'Uruguay UY', 'Venezuela VE']
  
 const fragment = document.createDocumentFragment();
 countriesArr.forEach(function(countrie, index) {
@@ -45,19 +45,22 @@ refs.input.addEventListener("input", debounce(onSearch, 500));
 refs.countrySelect.addEventListener("input", onSelect)
 //refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
 
+//let search = "&keyword=";
 let searchQuery;
-let selectedCountry = "US";
+let selectedCountry;
 
 function onSelect(e) {
     e.preventDefault();
     selectedCountry = e.target.value.slice(-2);
     console.log(selectedCountry)
+    paginator();
 }
 
 function onSearch(e) {
     e.preventDefault(); // чтоб при сабмите стр не перезагружалась
     resetSearch();
     searchQuery = e.target.value;
+    searchQuery;
     console.log(searchQuery)
     if (searchQuery === "") {
         document.querySelector(".paginator").innerHTML = "";
@@ -65,6 +68,7 @@ function onSearch(e) {
         return;
     }
     paginator();
+   
 
     // eventsApiService.event = refs.input.value;  // запис.значение, которое получаем при помощи сетера
     // eventsApiService.resetPage();       
@@ -85,11 +89,17 @@ function paginator() {
         dataSource: function (done) {
             $.ajax({
                 type: 'GET',
-                beforeSend: function(){
-                    refs.container.innerHTML = "<div class='while-searching_text'>Searching events...</div>";
+                beforeSend: function() {
+                    document.querySelector(".searching").innerHTML = "<div class='while-searching_text'>Searching events...</div>";
                 },
                 url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
                 success: function (response) {
+                    document.querySelector(".searching").innerHTML = "";
+                    if (response._embedded === undefined) {
+                        error({text: "No events"})
+                        throw new Error();
+                        
+                    }
                     done(response._embedded.events);
                 }
             });
