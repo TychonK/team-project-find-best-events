@@ -49,45 +49,45 @@
 <!-- модалка -->
     <!-- кнопка временная для открития модалки -->
     
-    <button type="button" class="open-btn" data-action="close-modal"> Открыть модалку</button>
+    <button type="button" class="open-btn" data-action=""> Открыть модалку</button>
     
-    <div class="modal js-modal ">
+    <div class="modal js-modal">
       <div class="modal__overlay"></div>
     
-      <div class="modal__content">
+      <div class="modal__container">
     <button type="button" class="modal__button" data-action="close-modal"> </button>
         <div class="modal__image--little">     
           <img class="modal__image" src="" alt="" />
         </div>
         
-        <div class="modal-info "> 
-          <div class="modal__image modal-info__item">
+        <div class="modal-content__container "> 
+          <div class="modal__image modal-content__item">
           <!-- <img class="modal__image--big" src="./images/demo.jpg" alt="" href=""  /></div> -->
           </div>
-          <div class="modal-info__list modal-info__item"> 
+          <div class="modal-content__item"> 
             <!-- инфо в эту разметку будет рендориться -->
-            <ul>
-              <li>
-                <h3>INFO</h3>
-                <p>Atlas Weekend is the largest music festival
+            <ul class="modal-info__list ">
+              <li class="modal-info__item">
+                <h3 class="modal-info__topic">INFO</h3>
+                <p class="modal-info__text">Atlas Weekend is the largest music festival
                 in Ukraine.More than 200 artists will create
                 a proper music festival atmosphere on 10 stages</p>
               </li>
-              <li>
-                <h3>WHEN</h3>
-                <p>2021-06-09</p>
-                <p>20:00 (Kyiv/Ukraine)</p>
+              <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHEN</h3>
+                <p class="modal-info__text">2021-06-09</p>
+                <p class="modal-info__text"></p>>20:00 (Kyiv/Ukraine)</p>
               </li>
-              <li>
-                <h3>WHERE</h3>
+              <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHERE</h3>
                 <p></p>
               </li>
-              <li>
-                <h3>WHO</h3>
+              <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHO</h3>
                 <p></p>
               </li>
-              <li>
-                <h3>PRICES</h3>
+              <li class="modal-info__item">
+                <h3 class="modal-info__topic">PRICES</h3>
                 <!-- это разметка рендориться -->
                 <p></p>
               </li>
