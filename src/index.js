@@ -14,9 +14,6 @@ import './js/modal';
 
 import eventsCardTpl from './templates/events-card.hbs';
 
-
-// let foundedEvent = '';  // перенесла в файл api-service.js
-
 const refs = {
     input: document.querySelector('#input-event'),
     countrySelect: document.getElementById('input-country'),
@@ -26,8 +23,6 @@ const refs = {
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
-    // заменить!!!
-
 };
 
 
@@ -46,18 +41,9 @@ refs.countrySelect.appendChild(fragment);
 
 const eventsApiService = new EventsApiService();
 
-// --!!-- некорректно работает --!!--
-// refs.input.addEventListener('input', debounce(() => {
-//     onSearch();
-// }, 500));
-
-
 refs.input.addEventListener("input", debounce(onSearch, 1000));
 refs.countrySelect.addEventListener("input", onSelect)
 
-//refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
-
-//let search = "&keyword=";
 let searchQuery;
 let selectedCountry;
 
@@ -69,7 +55,7 @@ function onSelect(e) {
 }
 
 function onSearch(e) {
-    e.preventDefault(); // чтоб при сабмите стр не перезагружалась
+    e.preventDefault(); 
     resetSearch();
     searchQuery = e.target.value;
     searchQuery;

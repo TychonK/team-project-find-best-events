@@ -1,31 +1,19 @@
-.header {
+/* .header {
   height: 100%;
   min-width: 320px;
-}
+} */
 
-.hero {
-  max-width: 1600px;
-  height: 600px;
-  padding-bottom: 200px;
-  padding-top: 200px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-  background-size: cover;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(47, 48, 58, 0.4)), to(rgba(47, 48, 58, 0.4))), url(../images/desktop/hero.jpg);
-  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/desktop/hero.jpg);
-  background-position: center;
-}
-
-*, ::after, ::before {
+*,
+::after,
+::before {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
   -moz-tab-size: 4;
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
 }
 
 html {
@@ -38,7 +26,8 @@ body {
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
 hr {
@@ -48,15 +37,19 @@ hr {
 
 abbr[title] {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bolder;
 }
 
-code, kbd, pre, samp {
-  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+code,
+kbd,
+pre,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 1em;
 }
 
@@ -64,7 +57,8 @@ small {
   font-size: 80%;
 }
 
-sub, sup {
+sub,
+sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -84,18 +78,26 @@ table {
   border-color: inherit;
 }
 
-button, input, optgroup, select, textarea {
+button,
+input,
+optgroup,
+select,
+textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
 }
 
-button, select {
+button,
+select {
   text-transform: none;
 }
 
-[type=button], [type=reset], [type=submit], button {
+[type='button'],
+[type='reset'],
+[type='submit'],
+button {
   -webkit-appearance: button;
 }
 
@@ -120,11 +122,12 @@ progress {
   vertical-align: baseline;
 }
 
-::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+[type='search'] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
@@ -160,4 +163,4 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}/*# sourceMappingURL=main.css.map */
+} /*# sourceMappingURL=main.css.map */

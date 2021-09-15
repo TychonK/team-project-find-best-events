@@ -33,32 +33,19 @@
           id="input-event"
           placeholder="Start searching"
         />
-
         <select id="input-country"></select>
 
-        <!-- Контейнер для галереи -->
-        <div class="searching"></div>
-        <ul class="events events-container"></ul>
+    <!-- Контейнер для галереи -->
+    <section class="container">
+      <div class="searching"></div>
+      <ul class="events events-container"></ul>
+    </section>
 
-        <div class="paginator">
-        
-        </div>
-      
-        <!-- Пока кнопка, потом заменить на перечень стр -->
-        <!-- <button
-          type="button"
-          class="btn-load-more"
-          data-action="load-more">
-
-      <span class="label">Show more</span>
-
-      </button>
-      </button> -->
+    <div class="paginator">
+    </div>
     
     </main>
 
-
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
 <!-- модалка -->
     <!-- кнопка временная для открития модалки -->
     
@@ -114,8 +101,9 @@
     <!-- конец модалки -->
 
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-    <include src="./partials/filter.html"></include>
+    <!-- <include src="./partials/filter.html"></include> -->
     <script src="./index.js"></script>
+    <script src="./js/modal.js"></script>
     <script src="./filterByCountry.js"></script>
     
   </body>
