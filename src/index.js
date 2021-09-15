@@ -41,16 +41,19 @@ refs.countrySelect.appendChild(fragment);
 
 const eventsApiService = new EventsApiService();
 
-refs.input.addEventListener("input", debounce(onSearch, 1000));
+refs.input.addEventListener("input", debounce(onSearch, 700));
 refs.countrySelect.addEventListener("input", onSelect)
 
 let searchQuery;
-let selectedCountry;
+let selectedCountry = "";
 
 function onSelect(e) {
     e.preventDefault();
     selectedCountry = e.target.value.slice(-2);
     console.log(selectedCountry)
+    if (selectedCountry === "") {
+        return;
+    }
     paginator();
 }
 
@@ -59,9 +62,10 @@ function onSearch(e) {
     resetSearch();
     searchQuery = e.target.value;
     searchQuery;
-    console.log(searchQuery)
+    //console.log(searchQuery)
     if (searchQuery === "") {
         document.querySelector(".paginator").innerHTML = "";
+        paginator();
         alert({text: "Please, specify you query"})
         return;
     }
@@ -94,7 +98,8 @@ function paginator() {
                 success: function (response) {
                     document.querySelector(".searching").innerHTML = "";
                     if (response._embedded === undefined) {
-                        error({text: "No events"})
+                        error({ text: "No events" })
+                        refs.container.innerHTML = "";
                         throw new Error();
                         
                     }
