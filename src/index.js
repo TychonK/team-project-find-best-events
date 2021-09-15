@@ -25,11 +25,11 @@ const refs = {
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
-        // заменить!!!
+    // заменить!!!
 
 };
 
- 
+
 
 const eventsApiService = new EventsApiService();
 
@@ -38,7 +38,7 @@ const eventsApiService = new EventsApiService();
 //     onSearch();
 // }, 500));
 
-refs.input.addEventListener("input", debounce(onSearch, 500));
+refs.input.addEventListener("input", debounce(onSearch, 1000));
 //refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
 
 let searchQuery;
@@ -85,7 +85,7 @@ function paginator() {
         totalNumberLocator: function (response) {
             return response._embedded.events.length;
         },
-        
+
         prevText: "<",
         nextText: ">",
         callback: function (data, pagination) {
