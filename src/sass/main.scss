@@ -1,5 +1,14 @@
-@import './breakpoints';
-@import './header';
-@import './normalize';
-@import './variables';
-@import './pagination';
+@import './vendors/normalize';
+
+@import './utils/breakpoints';
+@import './utils/variables';
+
+@import './base/common';
+@import './base/fonts';
+@import './base/container';
+
+@import './components/pagination';
+
+@import './layouts/header';
+@import './layouts/filter-section';
+@import './layouts/gallery';

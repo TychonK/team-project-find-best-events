@@ -11,7 +11,6 @@ import '@pnotify/core/dist/BrightTheme.css';
 import EventsApiService from './js/api-service';
 import eventsCardTpl from './templates/events-card.hbs';
 
-// let foundedEvent = '';  // перенесла в файл api-service.js
 
 const refs = {
     input: document.querySelector('.eventInput'),
@@ -19,24 +18,18 @@ const refs = {
     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
     filters: document.querySelector('.filters-js'),
     select: document.querySelector('.select-js')
-        // заменить!!!
 };
 
 const eventsApiService = new EventsApiService();
 
-// --!!-- некорректно работает --!!--
-// refs.input.addEventListener('input', debounce(() => {
-//     onSearch();
-// }, 500));
 
-refs.input.addEventListener("input", debounce(onSearch, 500));
-//refs.loadMoreBtn.addEventListener('click', onLoadMore);    // заменить!!!
+refs.input.addEventListener("input", debounce(onSearch, 1000));
 
 let searchQuery;
 let selectedCountry;
 
 function onSearch(e) {
-    e.preventDefault(); // чтоб при сабмите стр не перезагружалась
+    e.preventDefault(); 
     resetSearch();
     searchQuery = e.target.value;
     console.log(searchQuery)
