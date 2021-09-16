@@ -1,0 +1,17 @@
+{{#each this}}
+<li class="modal-info__item">
+    <h3 class="modal-info__topic">WHO</h3>
+    <p>{{name}}</p>
+</li>
+<li class="modal-info__item">
+    <h3 class="modal-info__topic">WHEN</h3>
+    <p class="modal-info__text">{{dates.start.localDate}}</p>
+    <p class="modal-info__text">{{dates.start.localTime}}</p>
+</li>
+<li class="modal-info__item">
+    <h3 class="modal-info__topic">PRICES</h3>
+    <p>{{priceRanges.0.type}} {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
+</p>
+</li>
+{{/each}}
+

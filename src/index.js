@@ -11,10 +11,10 @@ import getRefs from './js/refs';
 
 // import EventsApiService from './js/api-service';
 
-import './js/modal';
+// import './js/modal';
 
 import eventsCardTpl from './templates/events-card.hbs';
-
+import eventModalTpl from './templates/modal.hbs';
 const refs = getRefs();
 
 // const eventsApiService = new EventsApiService();
@@ -135,3 +135,90 @@ function resetSearch() {
 //         closerHover: true,
 //     });
 // }
+
+
+
+// async fetchApiEvent() {
+//     const url = `${BASE_URL}/events?keyword=${this.searchQuery}&apikey=${KEY}&countryCode=${this.country}&page=${this.page}&source=universe`;
+//     // &page=${this.page}
+//     // console.log(this);
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     // console.log(data); //Нам приходит массив объектов из _embedded
+//     const { _embedded } = data;
+//     // console.log(_embedded.events);
+//     return _embedded.events;
+//   }
+
+// searchService
+//   .fetchApiEvent()
+//   .then(data => eventCardsTpl(data))
+//     .then(markup => refs.cardsList.insertAdjacentHTML('beforeend', markup));
+  
+
+// ---/-------модалка------------------------------------------------
+let eventModalSrc = '';
+
+refs.eventsGallery.addEventListener('click', onEventOpenClick);
+
+function onEventOpenClick(event) {
+  event.preventDefault();
+  if (!event.target.classList === 'event__list')
+  {console.log('мимо');
+return}
+  eventModalSrc = event.target.dataset.src;
+
+  onOpenModal();
+  createModalContent(eventModalSrc)
+
+}
+
+ function createModalContent(eventModalSrc) {
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+    .then(response => response.json())
+    .then(data => {
+      return data._embedded.events
+      // console.log(data._embedded.events)
+     })
+    .then(data => eventModalTpl(data))
+    .then(el => refs.modalInfoList.insertAdjacentHTML('beforeend', el));
+    };
+    
+// const menuMarkup = createMenuMarkup(menu);
+
+// function createMenuMarkup(menu){
+//     return menu.map(menuCardTpl).join('');
+// };
+
+
+refs.modalOpenBtn.addEventListener('click', onOpenModal);
+
+function onOpenModal() {
+  window.addEventListener('keydown', onEscKeyPress)
+  refs.modalContainer.classList.add("is-open")
+};
+
+refs.modalCloseBtn.addEventListener('click', onCloseModal);
+
+function onCloseModal(){
+ refs.modalContainer.classList.remove("is-open");
+ clearModalContent()
+};
+
+function clearModalContent() {
+  refs.modalInfoList.innerHTML = '';
+}
+
+refs.modalOverlay.addEventListener('click', onOverlayClick);
+
+function onOverlayClick(e){
+ if(e.target === e.currentTarget){
+  onCloseModal()
+}
+};
+
+function onEscKeyPress(e){
+  if(e.code === 'Escape'){
+    onCloseModal()
+  }
+};
