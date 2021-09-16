@@ -42,10 +42,12 @@ return
 
 function createModalContent(eventModalSrc) {
      
-    return fetch( `https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
-        .then(response => response.json())
-        .then(data => console.log(data))
-      
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+    .then(response => response.json())
+    // .then(data => console.log(data))
+    .then(data => {
+      return data._embedded.events,
+    console.log(data._embedded.events); })
         .catch(err => {
             console.log(err);
             // error ({ text: 'No results' })
@@ -53,6 +55,9 @@ function createModalContent(eventModalSrc) {
     };
 
 
+
+
+// _embedded { } events {info}
 
 refs.modalOpenBtn.addEventListener('click', onOpenModal);
 
