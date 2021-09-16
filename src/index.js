@@ -14,6 +14,11 @@ import './js/modal';
 
 import eventsCardTpl from './templates/events-card.hbs';
 
+/* Text animation */
+import animate from "./js/textAnimation";
+
+animate();
+
 const refs = {
     input: document.querySelector('#input-event'),
     countrySelect: document.getElementById('input-country'),
@@ -46,6 +51,8 @@ refs.countrySelect.addEventListener("input", onSelect)
 
 let searchQuery;
 let selectedCountry = "";
+
+paginator();
 
 function onSelect(e) {
     e.preventDefault();
@@ -92,7 +99,7 @@ function paginator() {
             $.ajax({
                 type: 'GET',
                 beforeSend: function() {
-                    document.querySelector(".searching").innerHTML = "<div class='while-searching_text'>Searching events...</div>";
+                    document.querySelector(".searching").innerHTML = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
                 },
                 url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
                 success: function (response) {
