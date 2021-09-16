@@ -12,7 +12,7 @@ const refs = {
 
 let eventModalSrc = '';
 let priceArr = '';
-
+ let arr = ''
 refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
@@ -23,43 +23,27 @@ function onEventOpenClick(event) {
 return
   }
   eventModalSrc = event.target.dataset.src;
-  // console.log(event.target.dataset.src);
-  // console.log(eventModalSrc);
+
   onOpenModal();
   createModalContent(eventModalSrc)
-  // console.log(event);
-  // console.log(event.target.dataset.src);
- 
- 
-  // console.log(event.dataset);
-  // console.log(event.target);
-  // console.log(event.target.data-src.value);
-  // console.log(event.target.src);
 
-// const modalImgLink = event.target.dataset.source;
-// const modalImgAlt = event.target.alt;
-
-// modalImg.alt = modalImgAlt;
-// modalImg.src = modalImgLink;
 }
-
 function createModalContent(eventModalSrc) {
      
   return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
     .then(response => response.json())
     // .then(data => console.log(data))
     .then(data => {
-      
-      // return data._embedded.events,
+  
       createGallery(data._embedded.events)
-      //  console.log(data._embedded.events)
-        // createElement(data._embedded.events);
+
     })
         .catch(err => {
             console.log(err);
-            // error ({ text: 'No results' })
+     
         })
     };
+
 
 function createGallery(data) {
   const images = data.map(el => {
@@ -71,16 +55,10 @@ function createGallery(data) {
 
 
 
-
-
-
-
 function createElement({ name, info, url, priceRanges }) {
   
   let priceArr = priceRanges.map(el => { createPriceEl(el)  });
-
-  // return name
-  // console.log(name, info, url);
+;
     const galleryElement =
     `<li class="modal-info__item">
                 <h3 class="modal-info__topic">INFO</h3>
@@ -88,10 +66,7 @@ function createElement({ name, info, url, priceRanges }) {
               </li>
     `
   refs.modalInfoList.insertAdjacentHTML('beforeend', galleryElement)
-  // console.log(priceRanges);
-  // console.log(priceArr);
-  // createPriceEl(priceArr)
-  
+
 };
 
 
@@ -108,17 +83,6 @@ function createPriceEl({ type }) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-// _embedded { } events {info}
 
 refs.modalOpenBtn.addEventListener('click', onOpenModal);
 

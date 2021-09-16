@@ -12,7 +12,9 @@ import EventsApiService from './js/api-service';
 
 import './js/modal';
 
+
 import eventsCardTpl from './templates/events-card.hbs';
+
 
 const refs = {
     input: document.querySelector('#input-event'),
