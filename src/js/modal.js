@@ -5,17 +5,20 @@ const refs = {
     modalOpenBtn: document.querySelector('.open-btn'),
     modalCloseBtn: document.querySelector('.modal__button'),
   modalOverlay: document.querySelector('.modal__overlay'),
-    eventsGallery: document.querySelector('.events')
-};
+  eventsGallery: document.querySelector('.events'),
+  modalInfoList: document.querySelector('.modal-info__list'),
+  modalInfoTopic: document.querySelector('.modal-info__topic')      
+    };
 
 let eventModalSrc = '';
-
+let priceArr = '';
 
 refs.eventsGallery.addEventListener('click', onEventOpenClick);
+
 function onEventOpenClick(event) {
   event.preventDefault();
-  if (!event.target.classList === 'gallery__image'
-  ) {
+  if (!event.target.classList === 'event__list')
+  {
     console.log('мимо');
 return
   }
@@ -46,13 +49,71 @@ function createModalContent(eventModalSrc) {
     .then(response => response.json())
     // .then(data => console.log(data))
     .then(data => {
-      return data._embedded.events,
-    console.log(data._embedded.events); })
+      
+      // return data._embedded.events,
+      createGallery(data._embedded.events)
+      //  console.log(data._embedded.events)
+        // createElement(data._embedded.events);
+    })
         .catch(err => {
             console.log(err);
             // error ({ text: 'No results' })
         })
     };
+
+function createGallery(data) {
+  const images = data.map(el => {
+    // console.log(el);
+    createElement(el),
+      console.log(el);
+  });
+};
+
+
+
+
+
+
+
+function createElement({ name, info, url, priceRanges }) {
+  
+  let priceArr = priceRanges.map(el => { createPriceEl(el)  });
+
+  // return name
+  // console.log(name, info, url);
+    const galleryElement =
+    `<li class="modal-info__item">
+                <h3 class="modal-info__topic">INFO</h3>
+                <p class="modal-info__text">${name}</p>
+              </li>
+    `
+  refs.modalInfoList.insertAdjacentHTML('beforeend', galleryElement)
+  // console.log(priceRanges);
+  // console.log(priceArr);
+  // createPriceEl(priceArr)
+  
+};
+
+
+function createPriceEl({ type }) {
+
+  const galleryElementPrice =
+    `<li class="modal-info__item">
+                <h3 class="modal-info__topic">PRICES</h3>
+                  <p class="modal-info__text">${type}</p>
+              </li>
+    `
+    refs.modalInfoList.insertAdjacentHTML('beforeend', galleryElementPrice)
+  console.log(type);
+}
+
+
+
+
+
+
+
+
 
 
 
