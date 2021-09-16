@@ -1,8 +1,10 @@
 .events-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  position: relative;
+  left: 0;
   margin-top: 52px;
+  justify-content: center;
 
   @media screen and (min-width: $tablet) and (max-width: 1279.98px) {
     margin-top: 123px;
@@ -13,23 +15,31 @@
   }
 }
 
-// .event__list {
-//   margin-right: 14px;
-//   margin-bottom: 39px;
-//   flex: calc((100% / 2) - 14px);
-//   max-width: 50%;
+.event__list {
+  position: relative;
+  text-align: center;
 
-//   &:nth-child(2n) {
-//     margin-right: 0;
-//   }
+  border-radius: 50px 0px;
 
-//   &:nth-last-child(-n + 2) {
-//     margin-bottom: 0;
-//   }
-// }
+  transform: scale(1);
+  transition: box-shadow 0.5s, transform 0.5s;
 
-@media screen and (min-width: $tablet) and (max-width: 1279.98px) {
-  .event__list {
+  @media screen and (min-width: $mobile) and (max-width: 767.98px) {
+    margin-right: 14px;
+    margin-bottom: 39px;
+    flex: calc((100% / 2) - 14px);
+    max-width: 50%;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    &:nth-last-child(-n + 2) {
+      margin-bottom: 0;
+    }
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: 1279.98px) {
     margin-right: 27px;
     margin-bottom: 58px;
     flex: calc((100% / 3) - 27px);
@@ -43,10 +53,8 @@
       margin-bottom: 0;
     }
   }
-}
 
-@media screen and (min-width: 1280px) {
-  .event__list {
+  @media screen and (min-width: $pc) {
     margin-right: 70px;
     margin-bottom: 63px;
     flex: calc((100% / 4) - 70px);
@@ -62,21 +70,50 @@
   }
 }
 
-// .image__container {
+.event__list:hover {
+  cursor: pointer;
 
-// }
+  transform: scale(1.2);
+  box-shadow: 0 0 10px 7px rgba(220, 86, 197, 0.3);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.event__square {
+  position: absolute;
+  z-index: 20;
+  border: 1px solid rgba(220, 86, 197, 0.3);
+  border-radius: 50px 0px;
+
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+
+  @media screen and (min-width: $mobile) {
+    width: 109px;
+    height: 101px;
+    top: -9px;
+    right: -10px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 153px;
+    height: 143px;
+    top: -13px;
+    right: -14px;
+  }
+}
+
+.event__square:hover {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
 
 .event__image {
   display: inline-flex;
-  justify-content: left;
-  //   align-items: center;
-  // max-width: 128px;
   height: 161px;
   object-fit: cover;
   border-radius: 50px 0;
 
   @media screen and (min-width: $tablet) {
-    max-width: 180px;
     height: 227px;
   }
 }
