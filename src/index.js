@@ -13,19 +13,11 @@ import getRefs from './js/refs';
 
 import './js/modal';
 
-
 import eventsCardTpl from './templates/events-card.hbs';
 
 const refs = getRefs();
 
-<<<<<<< Updated upstream
-
-
-
-const eventsApiService = new EventsApiService();
-=======
 // const eventsApiService = new EventsApiService();
->>>>>>> Stashed changes
 
 refs.input.addEventListener('input', debounce(onSearch, 700));
 refs.countrySelect.addEventListener('input', onSelect);
