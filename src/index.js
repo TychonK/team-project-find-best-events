@@ -9,13 +9,20 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
 
-// import EventsApiService from './js/api-service';
+import EventsApiService from './js/api-service';
 
 import './js/modal';
 
 import eventsCardTpl from './templates/events-card.hbs';
 
 const refs = getRefs();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let showEv = new Date()
+    paginator(showEv);
+    // resetSearch()
+});
 
 // const eventsApiService = new EventsApiService();
 
