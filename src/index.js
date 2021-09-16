@@ -9,7 +9,7 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
 
-import EventsApiService from './js/api-service';
+// import EventsApiService from './js/api-service';
 
 import './js/modal';
 
@@ -18,10 +18,14 @@ import eventsCardTpl from './templates/events-card.hbs';
 
 const refs = getRefs();
 
+<<<<<<< Updated upstream
 
 
 
 const eventsApiService = new EventsApiService();
+=======
+// const eventsApiService = new EventsApiService();
+>>>>>>> Stashed changes
 
 refs.input.addEventListener('input', debounce(onSearch, 700));
 refs.countrySelect.addEventListener('input', onSelect);
@@ -105,9 +109,9 @@ function paginator() {
   });
 }
 
-function markupEvents(e) {
-  refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(e));
-}
+// function markupEvents(e) {
+//   refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(e));
+// }
 
 function resetSearch() {
   refs.container.innerHTML = '';
