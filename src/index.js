@@ -48,7 +48,7 @@ refs.countrySelect.addEventListener('input', onSelect);
 let searchQuery;
 let selectedCountry = '';
 
-paginator();
+// paginator();
 
 function onSelect(e) {
   e.preventDefault();
