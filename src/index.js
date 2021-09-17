@@ -181,7 +181,7 @@ console.log(event.target.src );
       // console.log(data._embedded.events)
      })
     .then(data => eventModalTpl(data))
-    .then(el => refs.modalInfoList.insertAdjacentHTML('beforeend', el));
+    .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el));
     };
     
     // modalImgBig
@@ -192,7 +192,7 @@ console.log(event.target.src );
 // };
 
 
-refs.modalOpenBtn.addEventListener('click', onOpenModal);
+// refs.modalOpenBtn.addEventListener('click', onOpenModal);
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress)
@@ -207,7 +207,7 @@ function onCloseModal(){
 };
 
 function clearModalContent() {
-  refs.modalInfoList.innerHTML = '';
+  refs.modalRenderContainer.innerHTML = '';
 }
 
 refs.modalOverlay.addEventListener('click', onOverlayClick);

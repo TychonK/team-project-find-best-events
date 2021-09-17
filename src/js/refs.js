@@ -9,12 +9,14 @@ export default function getRefs() {
     
   modalContainer: document.querySelector(".modal"),
   modalImg: document.querySelector('.modal__image'),
-  modalOpenBtn: document.querySelector('.open-btn'),
+  // modalOpenBtn: document.querySelector('.open-btn'),
   modalCloseBtn: document.querySelector('.modal__button'),
   modalOverlay: document.querySelector('.modal__overlay'),
   eventsGallery: document.querySelector('.events'),
   modalInfoList: document.querySelector('.modal-info__list'),
-    modalInfoTopic: document.querySelector('.modal-info__topic'),
-  modalImgBig: document.querySelector('.modal__image--big') 
+  modalInfoTopic: document.querySelector('.modal-info__topic'),
+  modalImgBig: document.querySelector('.modal__image--big'),
+  modalContentContainer: document.querySelector('.modal-content__container'),
+  modalRenderContainer: document.querySelector('.modal-render_container')
   };
 }
