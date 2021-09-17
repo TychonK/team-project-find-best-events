@@ -8,12 +8,16 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
+
+// import './js/modal';
+
+import eventModalTpl from './templates/modal.hbs';
+
 import EventsApiService from './js/api-service';
-import './js/modal';
+
 import eventsCardTpl from './templates/events-card.hbs';
 /* Text animation and spinner */
 import animate from "./js/textAnimation";
-
 
 animate();
 
@@ -105,3 +109,64 @@ function paginator() {
 function resetSearch() {
   refs.container.innerHTML = '';
 }
+
+
+// ---/-------модалка------------------------------------------------
+let eventModalSrc = '';
+
+refs.eventsGallery.addEventListener('click', onEventOpenClick);
+
+function onEventOpenClick(event) {
+  event.preventDefault();
+  if (!event.target.classList === 'event__list')
+  {console.log('мимо');
+return}
+  eventModalSrc = event.target.dataset.src;
+console.log(event.target.src );
+  onOpenModal();
+  createModalContent(eventModalSrc)
+
+}
+
+ function createModalContent(eventModalSrc) {
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+    .then(response => response.json())
+    .then(data => {
+      return data._embedded.events
+      // console.log(data._embedded.events)
+     })
+    .then(data => eventModalTpl(data))
+    .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el));
+    };
+    
+
+function onOpenModal() {
+  window.addEventListener('keydown', onEscKeyPress)
+  refs.modalContainer.classList.add("is-open")
+};
+
+refs.modalCloseBtn.addEventListener('click', onCloseModal);
+
+function onCloseModal(){
+ refs.modalContainer.classList.remove("is-open");
+ clearModalContent()
+};
+
+function clearModalContent() {
+  refs.modalRenderContainer.innerHTML = '';
+}
+
+refs.modalOverlay.addEventListener('click', onOverlayClick);
+
+function onOverlayClick(e){
+ if(e.target === e.currentTarget){
+  onCloseModal()
+}
+};
+
+function onEscKeyPress(e){
+  if(e.code === 'Escape'){
+    onCloseModal()
+  }
+};
+
