@@ -9,13 +9,25 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
 
-// import EventsApiService from './js/api-service';
-
 // import './js/modal';
 
-import eventsCardTpl from './templates/events-card.hbs';
 import eventModalTpl from './templates/modal.hbs';
+
+import EventsApiService from './js/api-service';
+
+import eventsCardTpl from './templates/events-card.hbs';
+/* Text animation and spinner */
+import animate from "./js/textAnimation";
+
+animate();
+
 const refs = getRefs();
+
+document.addEventListener('DOMContentLoaded', () => {
+    let showEv = new Date()
+    paginator(showEv);
+    // resetSearch()
+});
 
 // const eventsApiService = new EventsApiService();
 
@@ -24,6 +36,8 @@ refs.countrySelect.addEventListener('input', onSelect);
 
 let searchQuery;
 let selectedCountry = '';
+
+// paginator();
 
 function onSelect(e) {
   e.preventDefault();
@@ -44,45 +58,32 @@ function onSearch(e) {
   if (searchQuery === '') {
     document.querySelector('.paginator').innerHTML = '';
     paginator();
-    alert({ text: 'Please, specify you query' });
+    alert({ text: 'Please, specify you query', delay: 2000 });
     return;
   }
   paginator();
-
-  // eventsApiService.event = refs.input.value;  // запис.значение, которое получаем при помощи сетера
-  // eventsApiService.resetPage();
-
-  // //вставить fetch fetchEvent(foundedEvent)
-  // eventsApiService.fetchEvents()
-  //     .then(markupEvents);
 }
 
-// для кнопки Show More
-// function onLoadMore() {
-//     eventsApiService.fetchEvents()
-//         .then(markupEvents);
-// }
 
 function paginator() {
-  $('.paginator').pagination({
-    dataSource: function (done) {
-      $.ajax({
-        type: 'GET',
-        beforeSend: function () {
-          document.querySelector('.searching').innerHTML =
-            "<div class='while-searching_text'>Searching events...</div>";
-        },
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
-        success: function (response) {
-          document.querySelector('.searching').innerHTML = '';
-          if (response._embedded === undefined) {
-            error({ text: 'No events' });
-            refs.container.innerHTML = '';
-            throw new Error();
-          }
-          done(response._embedded.events);
-        },
-      });
+    $('.paginator').pagination({
+        dataSource: function (done) {
+            $.ajax({
+                type: 'GET',
+                beforeSend: function() {
+                    document.querySelector(".searching").innerHTML = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
+                },
+                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+                success: function (response) {
+                    document.querySelector(".searching").innerHTML = "";
+                    if (response._embedded === undefined) {
+                        error({ text: "No events", delay: 2000 })
+                        refs.container.innerHTML = "";
+                        throw new Error();  
+                    }
+                    done(response._embedded.events);
+                }
+            });
     },
     pageSize: 24,
     locator: '.events',
@@ -109,52 +110,6 @@ function resetSearch() {
   refs.container.innerHTML = '';
 }
 
-// // отрисовка контента
-
-// function contentOutput(events) {
-// if (events.length === 1) {
-//     resetSearch();
-//     markupContries(//renderEvents, events);
-// } else if (events.length > 1 && events.length <= 10) {
-//     resetSearch();
-//     markupContries(//renderEvents, events);
-// } else if (events.length > 10) {
-//     resultMessage(
-//         error,
-//         'To many matches found. Please enter a more specific query!',
-//     );
-// } else {
-//     resultMessage(info, 'No matches found!');
-// }
-// };
-
-// function resultMessage(typeInfo, textInfo) {
-//     typeInfo({
-//         text: `${textInfo}`,
-//         delay: 1000,
-//         closerHover: true,
-//     });
-// }
-
-
-
-// async fetchApiEvent() {
-//     const url = `${BASE_URL}/events?keyword=${this.searchQuery}&apikey=${KEY}&countryCode=${this.country}&page=${this.page}&source=universe`;
-//     // &page=${this.page}
-//     // console.log(this);
-//     const response = await fetch(url);
-//     const data = await response.json();
-//     // console.log(data); //Нам приходит массив объектов из _embedded
-//     const { _embedded } = data;
-//     // console.log(_embedded.events);
-//     return _embedded.events;
-//   }
-
-// searchService
-//   .fetchApiEvent()
-//   .then(data => eventCardsTpl(data))
-//     .then(markup => refs.cardsList.insertAdjacentHTML('beforeend', markup));
-  
 
 // ---/-------модалка------------------------------------------------
 let eventModalSrc = '';
@@ -214,3 +169,4 @@ function onEscKeyPress(e){
     onCloseModal()
   }
 };
+
