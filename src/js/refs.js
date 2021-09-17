@@ -14,6 +14,7 @@ export default function getRefs() {
   modalOverlay: document.querySelector('.modal__overlay'),
   eventsGallery: document.querySelector('.events'),
   modalInfoList: document.querySelector('.modal-info__list'),
-  modalInfoTopic: document.querySelector('.modal-info__topic') 
+    modalInfoTopic: document.querySelector('.modal-info__topic'),
+  modalImgBig: document.querySelector('.modal__image--big') 
   };
 }

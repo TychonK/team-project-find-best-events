@@ -1,4 +1,14 @@
 {{#each this}}
+<div class="modal__image--little">
+    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}" />
+</div>
+<div class="modal__image--big">
+    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}" />
+</div>
+<li class="modal-info__item"></li>
+<h3 class="modal-info__topic">INFO</h3>
+<p class="modal-info__text"></p>
+</li>
 <li class="modal-info__item">
     <h3 class="modal-info__topic">WHO</h3>
     <p>{{name}}</p>
@@ -7,6 +17,10 @@
     <h3 class="modal-info__topic">WHEN</h3>
     <p class="modal-info__text">{{dates.start.localDate}}</p>
     <p class="modal-info__text">{{dates.start.localTime}}</p>
+</li>
+<li class="modal-info__item">
+    <h3 class="modal-info__topic">WHERE</h3>
+    <p class="modal-info__text">{{dates.timezone}}</p>
 </li>
 <li class="modal-info__item">
     <h3 class="modal-info__topic">PRICES</h3>

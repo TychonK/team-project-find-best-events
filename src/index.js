@@ -167,7 +167,7 @@ function onEventOpenClick(event) {
   {console.log('мимо');
 return}
   eventModalSrc = event.target.dataset.src;
-
+console.log(event.target.src );
   onOpenModal();
   createModalContent(eventModalSrc)
 
@@ -184,6 +184,7 @@ return}
     .then(el => refs.modalInfoList.insertAdjacentHTML('beforeend', el));
     };
     
+    // modalImgBig
 // const menuMarkup = createMenuMarkup(menu);
 
 // function createMenuMarkup(menu){
