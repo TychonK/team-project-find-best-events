@@ -1,27 +1,22 @@
 {{#each this}}
 
-
-<div class="modal__image--big">
-    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}" />
+<div class="modal__image--little">
+    <img class="modal__image--little" src="{{images.2.url}}" alt="{{name}}" />
 </div>
-
-
 
 <div class="modal-content__container ">
 <div class="modal__image modal-content__item">
-<div class="modal__image--little">
-    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}" />
+<div class="modal__image--big">
+    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}"/>
 </div>
 
 </div>
-
-
 
 <div class="modal-content__item">
     <ul class="modal-info__list ">
         <li class="modal-info__item"></li>
         <h3 class="modal-info__topic">INFO</h3>
-        <p class="modal-info__text"></p>
+        <p class="modal-info__text">{{info}}</p>
         </li>
         <li class="modal-info__item">
             <h3 class="modal-info__topic">WHO</h3>

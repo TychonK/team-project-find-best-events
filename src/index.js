@@ -184,15 +184,6 @@ console.log(event.target.src );
     .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el));
     };
     
-    // modalImgBig
-// const menuMarkup = createMenuMarkup(menu);
-
-// function createMenuMarkup(menu){
-//     return menu.map(menuCardTpl).join('');
-// };
-
-
-// refs.modalOpenBtn.addEventListener('click', onOpenModal);
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress)
