@@ -1,6 +1,14 @@
 .footer {
-  padding-bottom: 18px;
-  padding-top: 80px;
+  padding-bottom: 27px;
+  padding-top: 60px;
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 18px;
+  }
+
+  @media screen and (min-width: $pc) {
+    padding-top: 80px;
+  }
 }
 
 .footer-copyright {
@@ -11,15 +19,18 @@
   letter-spacing: 0.3px;
   text-align: center;
   color: $input-text;
-  @media screen and (min-width: 768px) {
+
+  @media screen and (min-width: $tablet) {
     font-size: 16px;
     line-height: 1.25;
   }
 }
+
 .footer-heart {
   font-size: 20px;
   color: $heart;
 }
+
 .footer-students {
   color: $input-text;
   text-decoration: none;

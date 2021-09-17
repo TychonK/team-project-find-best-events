@@ -8,31 +8,16 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
-
 import EventsApiService from './js/api-service';
-
 import './js/modal';
-
 import eventsCardTpl from './templates/events-card.hbs';
-
 /* Text animation and spinner */
 import animate from "./js/textAnimation";
 
+
 animate();
 
-// const refs = {
-//     input: document.querySelector('#input-event'),
-//     countrySelect: document.getElementById('input-country'),
-//     container: document.querySelector('.events-container'),
-
-
-//     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
-//     filters: document.querySelector('.filters-js'),
-//     select: document.querySelector('.select-js')
-// };
-
 const refs = getRefs();
-
 
 document.addEventListener('DOMContentLoaded', () => {
     let showEv = new Date()
@@ -69,24 +54,12 @@ function onSearch(e) {
   if (searchQuery === '') {
     document.querySelector('.paginator').innerHTML = '';
     paginator();
-    alert({ text: 'Please, specify you query' });
+    alert({ text: 'Please, specify you query', delay: 2000 });
     return;
   }
   paginator();
-
-  // eventsApiService.event = refs.input.value;  // запис.значение, которое получаем при помощи сетера
-  // eventsApiService.resetPage();
-
-  // //вставить fetch fetchEvent(foundedEvent)
-  // eventsApiService.fetchEvents()
-  //     .then(markupEvents);
 }
 
-// для кнопки Show More
-// function onLoadMore() {
-//     eventsApiService.fetchEvents()
-//         .then(markupEvents);
-// }
 
 function paginator() {
     $('.paginator').pagination({
@@ -100,7 +73,7 @@ function paginator() {
                 success: function (response) {
                     document.querySelector(".searching").innerHTML = "";
                     if (response._embedded === undefined) {
-                        error({ text: "No events" })
+                        error({ text: "No events", delay: 2000 })
                         refs.container.innerHTML = "";
                         throw new Error();  
                     }
@@ -132,30 +105,3 @@ function paginator() {
 function resetSearch() {
   refs.container.innerHTML = '';
 }
-
-// // отрисовка контента
-
-// function contentOutput(events) {
-// if (events.length === 1) {
-//     resetSearch();
-//     markupContries(//renderEvents, events);
-// } else if (events.length > 1 && events.length <= 10) {
-//     resetSearch();
-//     markupContries(//renderEvents, events);
-// } else if (events.length > 10) {
-//     resultMessage(
-//         error,
-//         'To many matches found. Please enter a more specific query!',
-//     );
-// } else {
-//     resultMessage(info, 'No matches found!');
-// }
-// };
-
-// function resultMessage(typeInfo, textInfo) {
-//     typeInfo({
-//         text: `${textInfo}`,
-//         delay: 1000,
-//         closerHover: true,
-//     });
-// }
