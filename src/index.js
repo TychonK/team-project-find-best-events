@@ -9,13 +9,36 @@ import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
 
-// import EventsApiService from './js/api-service';
+import EventsApiService from './js/api-service';
 
 import './js/modal';
 
 import eventsCardTpl from './templates/events-card.hbs';
 
+/* Text animation and spinner */
+import animate from "./js/textAnimation";
+
+animate();
+
+// const refs = {
+//     input: document.querySelector('#input-event'),
+//     countrySelect: document.getElementById('input-country'),
+//     container: document.querySelector('.events-container'),
+
+
+//     loadMoreBtn: document.querySelector('[data-action="load-more"]'),
+//     filters: document.querySelector('.filters-js'),
+//     select: document.querySelector('.select-js')
+// };
+
 const refs = getRefs();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let showEv = new Date()
+    paginator(showEv);
+    // resetSearch()
+});
 
 // const eventsApiService = new EventsApiService();
 
@@ -24,6 +47,8 @@ refs.countrySelect.addEventListener('input', onSelect);
 
 let searchQuery;
 let selectedCountry = '';
+
+// paginator();
 
 function onSelect(e) {
   e.preventDefault();
@@ -64,25 +89,24 @@ function onSearch(e) {
 // }
 
 function paginator() {
-  $('.paginator').pagination({
-    dataSource: function (done) {
-      $.ajax({
-        type: 'GET',
-        beforeSend: function () {
-          document.querySelector('.searching').innerHTML =
-            "<div class='while-searching_text'>Searching events...</div>";
-        },
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
-        success: function (response) {
-          document.querySelector('.searching').innerHTML = '';
-          if (response._embedded === undefined) {
-            error({ text: 'No events' });
-            refs.container.innerHTML = '';
-            throw new Error();
-          }
-          done(response._embedded.events);
-        },
-      });
+    $('.paginator').pagination({
+        dataSource: function (done) {
+            $.ajax({
+                type: 'GET',
+                beforeSend: function() {
+                    document.querySelector(".searching").innerHTML = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
+                },
+                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+                success: function (response) {
+                    document.querySelector(".searching").innerHTML = "";
+                    if (response._embedded === undefined) {
+                        error({ text: "No events" })
+                        refs.container.innerHTML = "";
+                        throw new Error();  
+                    }
+                    done(response._embedded.events);
+                }
+            });
     },
     pageSize: 24,
     locator: '.events',
