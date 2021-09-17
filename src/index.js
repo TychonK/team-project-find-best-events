@@ -31,7 +31,6 @@ animate();
 //     select: document.querySelector('.select-js')
 // };
 
-=======
 const refs = getRefs();
 
 // const eventsApiService = new EventsApiService();
