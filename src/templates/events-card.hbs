@@ -1,11 +1,11 @@
 {{#each this}}
-    <li class="event__list">
-            <div class='event__square'></div>
-            <img class="event__image" src="{{images.2.url}}" data-src="{{id}}" alt="{{name}}"/>
-        <div class="event__content">
-            <h3 class="event__title">{{name}}</h3>
-            <p class="event__date">{{dates.start.localDate}}</p>
-            <p class="event__place">{{dates.timezone}}</p>
-        </div>
-    </li>
+<li class="event__list" data-src="{{id}}">
+    <div class='event__square' data-src="{{id}}"></div>
+    <img class="event__image" src="{{images.2.url}}" data-src="{{id}}" alt="{{name}}" />
+    <div class="event__content" data-src="{{id}}">
+        <h3 class="event__title" data-src="{{id}}">{{name}}</h3>
+        <p class="event__date" data-src="{{id}}">{{dates.start.localDate}}</p>
+        <p class="event__place" data-src="{{id}}">{{dates.timezone}}</p>
+    </div>
+</li>
 {{/each}}
