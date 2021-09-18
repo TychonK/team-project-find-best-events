@@ -43,6 +43,7 @@ function onSelect(e) {
   e.preventDefault();
   selectedCountry = e.target.value.slice(-2);
   console.log(selectedCountry);
+  refs.container.innerHTML = "";
   if (selectedCountry === '') {
     return;
   }
