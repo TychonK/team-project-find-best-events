@@ -1,13 +1,13 @@
 .footer {
-  padding-bottom: 27px;
-  padding-top: 60px;
+  margin-bottom: 27px;
+  margin-top: 60px;
 
   @media screen and (min-width: $tablet) {
-    padding-bottom: 18px;
+    margin-bottom: 18px;
   }
 
   @media screen and (min-width: $pc) {
-    padding-top: 80px;
+    margin-top: 80px;
   }
 }
 
@@ -16,7 +16,6 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: 0.3px;
   text-align: center;
   color: $input-text;
 
