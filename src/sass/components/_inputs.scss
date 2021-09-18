@@ -85,6 +85,7 @@
     width: 270px;
   }
   &::after {
+    pointer-events: none;
     content: '';
     position: absolute;
     background: url('../images/search-icon.svg');
@@ -102,6 +103,7 @@
       width: 270px;
     }
     &::after {
+      pointer-events: none;
       content: '';
       position: absolute;
       background: url('../images/select-icon.svg');

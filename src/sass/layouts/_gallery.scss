@@ -3,16 +3,7 @@
   flex-wrap: wrap;
   position: relative;
   left: 0;
-  margin-top: 52px;
   justify-content: center;
-
-  @media screen and (min-width: $tablet) and (max-width: 1279.98px) {
-    margin-top: 123px;
-  }
-
-  @media screen and (min-width: $pc) {
-    margin-top: 133px;
-  }
 }
 
 .event__list {
@@ -165,5 +156,21 @@
   @media screen and (min-width: $tablet) {
     font-size: 14px;
     line-height: 1.2;
+  }
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 9px;
+    margin-right: 3px;
+    background: url('../images/location.svg');
+    fill: white;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @media (min-width: $tablet) {
+      width: 8px;
+      height: 11px;
+    }
   }
 }
