@@ -98,6 +98,10 @@ function paginator() {
       console.log(pagination);
       refs.container.innerHTML = '';
       refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(data));
+      
+      if (document.querySelectorAll(".event__list").length === 1) {
+        document.querySelector(".event__list").style.margin = 0;
+      }
     },
   });
 }
