@@ -31,5 +31,18 @@ export default function () {
             document.querySelectorAll(".input-cont")[i].classList.add("input-animate")
         }
     }
+
+    /* Footer animation */
+    const footerText = document.querySelector(".footer");
+
+    let footerObserver = new IntersectionObserver((entry) => {
+        if (entry[0].intersectionRatio > 0) {
+                entry[0].target.classList.add("animated");
+            } else {
+                entry[0].target.classList.remove("animated")
+            }
+    })
+    
+    footerObserver.observe(footerText)
 }
 
