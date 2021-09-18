@@ -4,7 +4,7 @@ import getRefs from './refs';
 const refs = getRefs();
 
 export const countriesArr = [
-  'Choose country...',
+  'Choose country',
   'United States Of America US',
   'Andorra AD',
   'Anguilla AI',

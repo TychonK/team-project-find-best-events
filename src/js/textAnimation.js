@@ -23,5 +23,13 @@ export default function () {
         clearInterval(timer);
         timer = null;
     }
+
+    let inputTimer = setInterval(onInput, 50);
+
+    function onInput() {
+        for (let i = 0; i < document.querySelectorAll(".input-cont").length; i++) {
+            document.querySelectorAll(".input-cont")[i].classList.add("input-animate")
+        }
+    }
 }
 
