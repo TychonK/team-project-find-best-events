@@ -8,6 +8,7 @@
   position: fixed;
   z-index: 3;
   width: 100vw;
+  overflow-y: hidden;
   height: 100vh;
   opacity: 0;
   pointer-events: none;
@@ -18,7 +19,6 @@
 .modal.is-open {
   opacity: 1;
   pointer-events: initial;
-  transform: scale(1);
 }
 
 .modal__overlay {
@@ -33,15 +33,17 @@
 
 .modal__container {
   margin: 0;
-  margin-top: 20px;
   padding-top: 75px;
-  // padding-right: 17px;
-  padding-bottom: 104px;
-  // padding-left: 12px;
+  padding-bottom: 104px; 
+  @media (min-width: $tablet) {
+    padding-top: 62px;
+    padding-bottom: 62px;
+  }
+
   width: 272px;
   max-width: 100%;
   max-height: 100%;
-  // position: absolute;
+
   display: inline-table;
   top: 0;
   left: 50%;
@@ -49,6 +51,7 @@
   background-color: #fff2fd;
   border-radius: 150px 0px;
   background-blend-mode: color;
+
   // margin-top: 201px;
   // margin-left: 175px;
 
@@ -58,17 +61,13 @@
   // background-color: #fff2fd;
   // border-radius: 300px 0 300px 0;
 
-  // transform: scale(1);
+
   @media screen and (min-width: $tablet) {
-    padding-top: 28px;
-    padding-right: 10px;
-    padding-bottom: 56px;
-    padding-left: 50px;
     width: 595px;
     border-radius: 300px 0px;
   }
+
   @media screen and (min-width: $pc) {
-    padding: 62px 32px;
     width: 930px;
     max-height: 1023px;
   }
@@ -76,6 +75,9 @@
 
 .modal.is-open .modal__container {
   transform: scale(1);
+  @media (min-width: $tablet) {
+    transform: scale(0.75);
+  }
 }
 
 .modal__button {
@@ -104,31 +106,26 @@
   background-repeat: no-repeat;
 }
 .modal-info__list {
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
+  @media (min-width: $tablet) {
+    padding-left: 0;
+  }
+
 }
 .modal__button:hover,
 .modal__button:focus {
   color: #fff;
   background-color: rgba(203, 202, 207, 0.568);
 }
+
 .modal__image {
-  display: none;
-  @media screen and (min-width: $tablet) {
-    display: block;
-  }
+  transform: translateX(-25%);
+  height: 100%;
+  max-width: none;
 }
+
 .modal__image--little {
-  // display: block;
-  // // margin-bottom: 41px;
-  // margin-right: auto;
-  // margin-left: auto;
-  // margin-bottom: 18px;
-  // border-radius: 50%;
-  // width: 102px;
-  // height: 102px;
-  // // background-image: url('../images/demo.jpg');
-  // background-size: cover;
   display: inline-block;
   margin-right: auto;
   margin-bottom: 18px;
@@ -141,6 +138,7 @@
   @media screen and (min-width: $tablet) {
     width: 70px;
     height: 70px;
+    margin-bottom: 43px;
   }
   @media screen and (min-width: $pc) {
     width: 132px;
@@ -150,10 +148,23 @@
 
 .modal__image--big {
   display: block;
-  max-width: 60px;
-  max-height: 100px;
+  display: none;
+  height: 100%;
+  width: 360px;
   margin-right: auto;
   margin-left: auto;
+  text-align: -webkit-center;
+
+  overflow: hidden;
+
+  @media screen and (min-width: $tablet) {
+    display: block;
+    width: 233px;
+  }
+
+  @media screen and (min-width: $pc) {
+    width: 360px;
+  }
 }
 .modal-content__container {
   flex-wrap: nowrap;
@@ -167,6 +178,8 @@
   @media screen and (min-width: $tablet) {
     margin: 0px;
     display: flex;
+    margin-left: 0;
+    justify-content: center;
     text-align: left;
   }
 }
@@ -178,7 +191,23 @@
   margin-top: 60px;
   @media screen and (min-width: $tablet) {
     margin: 0;
-    flex-basis: calc((100% - 60px * 2) / 2);
+
+    &:not(:first-child) {
+      margin-left: 30px;
+    }
+    &:first-child {
+      margin-left: 50px;
+    }
+  }
+  @media screen and (min-width: $pc) {
+    margin: 0;
+    &:first-child {
+      margin-left: 30px;
+    }
+    &:not(:first-child) {
+      margin-left: 60px;
+    }
+
   }
 }
 
@@ -202,12 +231,15 @@
 .info__text {
   height: 100px;
   overflow: scroll;
+  overflow-x: hidden;
   margin-bottom: 10px;
 }
 .price-tickets {
   margin-bottom: 10px;
 }
-
+.button-more {
+  text-align: center;
+}
 .modal-btn_more {
   display: inline-block;
   border-radius: 5px;
@@ -215,24 +247,36 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 15px;
   cursor: pointer;
   color: #4c00fe;
   background: none;
   padding: 10px 3px;
-  // min-width: 255px;
-  // align-items: center;
-  justify-content: center;
-  // margin-right: auto;
-  margin-left: 22px;
-  // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  width: 230px;
+  height: 40px;
+
+  margin: 0 auto 0 20px;
+
+  @media screen and (min-width: $tablet) {
+    border: 1px solid #dc56c5;
+    width: 255px;
+    margin-left: 175px;
+    margin-right: auto;
+    margin-top: 43px;
+  }
+
+  @media screen and (min-width: $pc) {
+    margin-top: 45px;
+    margin-left: 337px;
+  }
 }
 
 .modal-btn_more:hover,
 .modal-btn_more:focus {
   background-color: #4c00fe;
   color: #fff;
+  border: 1px solid #dc56c5;
 }
 
 .modal-btn_tickets {
@@ -247,13 +291,15 @@
   cursor: pointer;
   color: #ffffff;
   background: #4c00fe;
-  padding: 10px 3px;
+  padding: 10px 19px;
   margin-bottom: 25px;
   justify-content: center;
 }
 
-.modal-btn_more:hover,
-.modal-btn_more:focus {
-  background-color: #4c00fe;
-  color: #fff;
+.modal-btn_tickets:hover,
+.modal-btn_tickets:focus {
+  background-color: #ffffff;
+  color: #4c00fe;
+  border: 1px solid #dc56c5;
+
 }
