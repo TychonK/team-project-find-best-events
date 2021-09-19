@@ -8,9 +8,6 @@ import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 import getRefs from './js/refs';
-
-// import './js/modal';
-
 import eventModalTpl from './templates/modal.hbs';
 
 import EventsApiService from './js/api-service';
@@ -120,7 +117,7 @@ function resetSearch() {
 
 // ---/-------модалка------------------------------------------------
 let eventModalSrc = '';
-
+let eventModalAuthor = '';
 refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
@@ -129,10 +126,10 @@ function onEventOpenClick(event) {
   {console.log('мимо');
 return}
   eventModalSrc = event.target.dataset.src;
-console.log(event.target.src );
+  eventModalAuthor = event.target.alt;
+
   onOpenModal();
   createModalContent(eventModalSrc)
-
 }
 
  function createModalContent(eventModalSrc) {
@@ -179,3 +176,36 @@ function onEscKeyPress(e){
   }
 };
 
+
+refs.modalMoreBtn.addEventListener('click', onModalMoreBtnClick);
+
+function onModalMoreBtnClick(event) {
+  event.preventDefault();
+  onCloseModal()
+  resetSearch()
+  createModalMoreBtnContent(eventModalAuthor)
+      //  console.log(eventModalAuthor);
+ 
+}
+
+function createModalMoreBtnContent(eventModalAuthor) {
+  resetSearch()
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${eventModalAuthor}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      return data._embedded.events
+      // console.log(eventModalAuthor);
+      // console.log(data._embedded.events)
+     })
+    .then(data => eventsCardTpl(data))
+    .then(el => {
+      refs.container.innerHTML = ''
+      // console.log(el)
+      refs.container.insertAdjacentHTML('beforeend', el)
+   })
+  // refs.container.insertAdjacentHTML('beforeend', el));
+  // 
+ 
+};
+    
