@@ -119,11 +119,9 @@
   background-color: rgba(203, 202, 207, 0.568);
 }
 .modal__image {
-  // display: none;
-  // @media screen and (min-width: $tablet) {
-  //   display: block;
-  // }
-
+  transform: translateX(-25%);
+  height: 100%;
+  max-width: none;
 }
 .modal__image--little {
   // display: block;
@@ -159,11 +157,12 @@
 .modal__image--big {
   display: block;
   display: none;
-  // max-width: 60px;
-  // max-height: 100px;
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
   text-align: -webkit-center;
+
+  overflow: hidden;
   
    @media screen and (min-width: $tablet) {
      display: block;
