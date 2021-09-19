@@ -1,0 +1,59 @@
+.scrollBtn {
+  position: fixed;
+  bottom: 12px;
+  right: 10px;
+  z-index: 3;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+
+  width: 40px;
+  height: 40px;
+
+  @media (min-width: $tablet) {
+    right: 12px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  @media (min-width: $pc) {
+    right: 30px;
+    bottom: 25px;
+    width: 60px;
+    height: 60px;
+  }
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(60px);
+
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  transition: 0.5s;
+}
+
+.scrollBtn:hover {
+  background-color: rgba(172, 172, 172, 0.25);
+  padding-top: 0px;
+}
+
+.scroll-icon {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+  transform: rotate(180deg);
+}
+
+.showScroll {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0px);
+}
+
+html {
+  scroll-behavior: smooth;
+}

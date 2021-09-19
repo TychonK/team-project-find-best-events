@@ -16,10 +16,13 @@ import eventsCardTpl from './templates/events-card.hbs';
 /* Text animation and spinner */
 import animate from "./js/textAnimation";
 /* Gallery animation */
-import animateGallery from "./js/gallery-animation"
-
+import animateGallery from "./js/gallery-animation";
+/* Scroll to top */
+import scrollToTop from './js/scrollToTop';
 /* Code */
+
 animate();
+scrollToTop();
 
 const refs = getRefs();
 
