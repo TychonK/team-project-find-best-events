@@ -16,7 +16,7 @@
     <ul class="modal-info__list ">
         <li class="modal-info__item"></li>
         <h3 class="modal-info__topic">INFO</h3>
-        <p class="modal-info__text">{{info}}</p>
+        <p class="modal-info__text info__text">{{info}}</p>
         </li>
         <li class="modal-info__item">
             <h3 class="modal-info__topic">WHO</h3>
@@ -33,8 +33,13 @@
         </li>
         <li class="modal-info__item">
             <h3 class="modal-info__topic">PRICES</h3>
-            <p>{{priceRanges.0.type}} {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
+            <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}} {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
             </p>
+            <button type="button" class="modal-btn_tickets">BUY TICKETS</button>
+            <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}}
+                {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
+            </p>
+            <button type="button" class="modal-btn_tickets">BUY TICKETS</button>
         </li>
     </ul>
 </div>
