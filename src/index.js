@@ -150,6 +150,7 @@ console.log(event.target.src );
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress)
   refs.modalContainer.classList.add("is-open")
+  document.querySelector("body").classList.add("no-scroll")
 };
 
 refs.modalCloseBtn.addEventListener('click', onCloseModal);
@@ -157,6 +158,7 @@ refs.modalCloseBtn.addEventListener('click', onCloseModal);
 function onCloseModal(){
  refs.modalContainer.classList.remove("is-open");
  clearModalContent()
+ document.querySelector("body").classList.remove("no-scroll")
 };
 
 function clearModalContent() {
