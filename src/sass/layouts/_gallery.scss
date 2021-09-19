@@ -1,9 +1,19 @@
 .events-container {
-  display: flex;
+  display: -webkit-inline-box;
+  // display: flex;
   flex-wrap: wrap;
   position: relative;
+  top: -51px;
   left: 0;
   justify-content: center;
+
+  @media screen and (min-width: $tablet) and (max-width: 1279.98px) {
+    top: -47px;
+  }
+
+  @media screen and (min-width: $pc) {
+    top: -46px;
+  }
 }
 
 .event__list {
@@ -164,7 +174,7 @@
     width: 6px;
     height: 9px;
     margin-right: 3px;
-    background: url('../images/location.svg');
+    background: url('../images/icons/location.svg');
     fill: white;
     display: inline-block;
     background-size: cover;
