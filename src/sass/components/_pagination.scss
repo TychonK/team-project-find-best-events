@@ -1,3 +1,17 @@
+.paginator {
+  margin-top: 60px;
+
+  @media (min-width: $pc) {
+    margin-top: 80px;
+  }
+
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  transition: 1s;
+}
+
 .paginationjs-pages ul {
   display: flex;
   justify-content: center;
@@ -17,19 +31,19 @@
   transition: 0.5s;
 
   &:not(:first-child) {
-  margin-left: 5px;
-}
-&.active { 
-  border: 1px solid #dc56c5;
-  border-radius: 10px 0px;
-  & a {
-    color: #dc56c5;
+    margin-left: 5px;
   }
-}
-&:hover {
-  border: 1px solid #dc56c5;
-  border-radius: 10px 0px;
-}
+  &.active {
+    border: 1px solid #dc56c5;
+    border-radius: 10px 0px;
+    & a {
+      color: #dc56c5;
+    }
+  }
+  &:hover {
+    border: 1px solid #dc56c5;
+    border-radius: 10px 0px;
+  }
 }
 
 .paginationjs-pages ul li a {
@@ -54,7 +68,7 @@
 }
 
 body {
-  background: #0E0E0E;
+  background: #0e0e0e;
 }
 
 .while-searching_text {

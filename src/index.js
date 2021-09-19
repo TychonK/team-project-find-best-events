@@ -18,7 +18,10 @@ import EventsApiService from './js/api-service';
 import eventsCardTpl from './templates/events-card.hbs';
 /* Text animation and spinner */
 import animate from "./js/textAnimation";
+/* Gallery animation */
+import animateGallery from "./js/gallery-animation"
 
+/* Code */
 animate();
 
 const refs = getRefs();
@@ -26,10 +29,8 @@ const refs = getRefs();
 document.addEventListener('DOMContentLoaded', () => {
     let showEv = new Date()
     paginator(showEv);
-    // resetSearch()
 });
 
-// const eventsApiService = new EventsApiService();
 
 refs.input.addEventListener('input', debounce(onSearch, 700));
 refs.countrySelect.addEventListener('input', onSelect);
@@ -103,6 +104,7 @@ function paginator() {
       if (document.querySelectorAll(".event__list").length === 1) {
         document.querySelector(".event__list").style.margin = 0;
       }
+      animateGallery();
     },
   });
 }

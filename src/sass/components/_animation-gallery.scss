@@ -1,0 +1,12 @@
+.event__list {
+  opacity: 0;
+  transform: translateY(50px);
+
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  transition: 0.85s;
+}
+
+.animated {
+    opacity: 1;
+    transform: translateY(0px);
+}

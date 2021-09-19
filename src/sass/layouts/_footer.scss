@@ -2,6 +2,14 @@
   margin-bottom: 27px;
   margin-top: 60px;
 
+  /* Animation */
+
+  opacity: 0;
+  transform: translateY(-35px);
+
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715, 0.4);
+  transition: 3s;
+
   @media screen and (min-width: $tablet) {
     margin-bottom: 18px;
   }
