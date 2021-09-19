@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Event Booster</title>
+    <title>Event Booster | Find Best Events Around the World</title>
+    <meta name="description"
+      content="Look for and find the best event all around the globe! Search among many different countries and find event that will make you rock!">
+    <meta name="keywords" content="events, search, find, best events, find events, events booster">
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="language" content="English">
+    <meta name="author" content="GoIT students">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -28,31 +35,11 @@
  
     <main>
       <include src="./partials/main.html"></include>
+
+      <include src="./partials/modal.html"></include>
     </main>
 
     <include src="./partials/footer.html"></include>
-
-
-    <!-- модалка -->
-    <!-- кнопка временная для открития модалки -->
-
-    <!-- <button type="button" class="open-btn" data-action=""> Открыть модалку</button> -->
-
-    
-    <div class="modal js-modal">
-      <div class="modal__overlay"></div>
-    
- <div class="modal__container">
-    <button type="button" class="modal__button" data-action="close-modal"> </button>
-       
-        <div class="modal-render_container"></div>
-        
-
-    <button type="button" class="modal-btn_more">MORE FROM THIS AUTHOR</button>
-</div>
-</div>
-    <!-- конец модалки -->
-
 
     <script src="./index.js"></script>
     <script src="./js/modal.js"></script>
