@@ -128,8 +128,25 @@
   left: -107.49px;
   top: -90px;
   border-radius: 100%;
-  background: linear-gradient(136.07deg, rgba(0, 0, 0, 0.9) 10.75%, rgba(0, 0, 0, 0.3) 92.33%);
+
+  background: radial-gradient(
+      farthest-corner at top,
+      #ffffff 0%,
+      #b3b1b3 5%,
+      #646364 15%,
+      #000000 50%
+    )
+    top right/200% 200%;
+  animation: colorChange 5s infinite alternate;
+
+  // background: linear-gradient(136.07deg, rgba(0, 0, 0, 0.9) 10.75%, rgba(0, 0, 0, 0.3) 92.33%);
   backdrop-filter: blur(20px);
+}
+
+@keyframes colorChange {
+  to {
+    background-position: top left;
+  }
 }
 
 @media (min-width: $tablet) {
@@ -139,8 +156,8 @@
     height: 302px;
     left: -179px;
     top: -151px;
-    background: linear-gradient(136.07deg, rgb(0 0 0 / 100%) 44.75%, rgba(196, 196, 196, 0) 92.33%);
-    backdrop-filter: blur(30px);
+    // background: linear-gradient(136.07deg, rgb(0 0 0 / 100%) 44.75%, rgba(196, 196, 196, 0) 92.33%);
+    // backdrop-filter: blur(30px);
   }
 }
 
