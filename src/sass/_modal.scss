@@ -34,7 +34,7 @@
 .modal__container {
   margin: 0;
   padding-top: 75px;
-  padding-bottom: 104px; 
+  padding-bottom: 104px;
   @media (min-width: $tablet) {
     padding-top: 62px;
     padding-bottom: 62px;
@@ -60,7 +60,6 @@
   // padding: 60px 30px;
   // background-color: #fff2fd;
   // border-radius: 300px 0 300px 0;
-
 
   @media screen and (min-width: $tablet) {
     width: 595px;
@@ -111,7 +110,6 @@
   @media (min-width: $tablet) {
     padding-left: 0;
   }
-
 }
 .modal__button:hover,
 .modal__button:focus {
@@ -207,7 +205,6 @@
     &:not(:first-child) {
       margin-left: 60px;
     }
-
   }
 }
 
@@ -292,8 +289,10 @@
   color: #ffffff;
   background: #4c00fe;
   padding: 10px 19px;
-  margin-bottom: 25px;
   justify-content: center;
+  // margin: auto 0 auto 450px;
+  margin-left: 550px;
+  margin-top: 20;
 }
 
 .modal-btn_tickets:hover,
@@ -301,5 +300,4 @@
   background-color: #ffffff;
   color: #4c00fe;
   border: 1px solid #dc56c5;
-
 }
