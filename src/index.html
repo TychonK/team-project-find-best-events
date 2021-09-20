@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Booster | Find Best Events Around the World</title>
+    <meta name="description"
+      content="Look for and find the best event all around the globe! Search among many different countries and find event that will make you rock!">
+    <meta name="keywords" content="events, search, find, best events, find events, events booster">
+    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="language" content="English">
+    <meta name="author" content="GoIT students">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicons/favicon-16x16.png">
+    <!-- jQuaery & Pagination plugin connection -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/pagination.js"></script>
+  </head>
 
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Event Booster</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-    integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-    crossorigin="anonymous" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/main.min.css">
-</head>
-  
-
-
-
- 
 
   <body>
-     <header>
-    <include src="./partials/header.html"></include>
-    </header>
-    <div>
-      <h1 class="title">FIND BEST EVENTS AROUND THE WORLD</h1>
-      <input
-        class="eventInput"
-        type="text"
-        name="event"
-        id="input-event"
-        placeholder="Start searching"
-      />
-      <input
-        class="countryInput"
-        type="text"
-        name="country"
-        id="input-country"
-        placeholder="Choose country"
-      />
-    </div>
+   
+      <include src="./partials/header.html"></include>
+ 
+    <main>
+      <include src="./partials/main.html"></include>
+      <button onclick="topFunction()" id="scrollBtn" class="scrollBtn" title="Go to top">
+        <svg class="scroll-icon">
+          <use href="./images/to-top.svg#scroll"></use>
+        </svg>
+      </button>
+      <include src="./partials/modal.html"></include>
+    </main>
 
-    <!-- Контейнер для галереи -->
-    <ul class="events events-container"></ul>
+    <include src="./partials/footer.html"></include>
 
 
-    <!-- Пока кнопка, потом заменить на перечень стр -->
-    <button
-      type="button"
-      class="btn-load-more"
-      data-action="load-more">
-
-      <span class="label">Show more</span>
-    </button>
-
-    
-    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-
-
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
+    <script src="./js/modal.js"></script>
+    <script>
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+      </script>
   </body>
 </html>

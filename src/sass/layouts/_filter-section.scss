@@ -1,0 +1,38 @@
+.filter {
+  width: 270px;
+  height: 40px;
+  padding-left: 655px;
+  padding-top: 214px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.filters {
+  overflow: hidden;
+  position: absolute;
+  left: 16px;
+  top: 167px;
+  padding: 16px 0;
+  @media screen and (min-width: 1920px) {
+    right: 30%;
+  }
+}
+.select {
+  background-color: rgb(139, 98, 98);
+  color: rgba(81, 139, 74, 0.2);
+  width: 270px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+}
+select option:hover,
+select option:focus,
+select option:checked {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.options {
+  border-radius: 10px;
+  color: #fff;
+  background-color: #333;
+  transition: color 250ms linear, background-color 250ms linear;
+}

@@ -1,4 +1,22 @@
-@import './breakpoints';
-@import './header';
-@import './normalize';
-@import './variables';
+@import './vendors/normalize';
+
+@import './utils/breakpoints';
+@import './utils/variables';
+
+@import './base/common';
+@import './base/fonts';
+@import './base/container';
+
+@import './components/pagination';
+@import './modal';
+
+@import './layouts/header';
+@import './layouts/filter-section';
+@import './layouts/gallery';
+@import './layouts/footer';
+@import './text-animation';
+
+@import './components/inputs';
+
+@import './components/animation-gallery';
+@import './components/scrollToTop';

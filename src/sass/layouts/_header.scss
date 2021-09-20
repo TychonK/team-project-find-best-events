@@ -1,20 +1,10 @@
 .hero {
-  max-width: 1600px;
-  height: 600px;
-  padding-bottom: 200px;
-  padding-top: 200px;
-  margin-right: auto;
-  margin-left: auto;
-  text-align: center;
+  padding: 0;
   background: black;
   background-size: cover;
   background-image: url(../images/desktop/hero.jpg);
   background-position: center;
-
-  @media screen and (max-width: 1199px) {
-    height: 400px;
-    padding: 0 0;
-  }
+  height: 365px;
 }
 @media screen and (min-width: 320px) and (max-width: 1600px) {
   .hero {
@@ -50,6 +40,7 @@
       background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
         url(../images/desktop/hero.jpg);
       padding: 0 0;
+      height: 446px;
     }
   }
 
@@ -64,103 +55,127 @@
 }
 
 .hero__title {
-  position: absolute;
-  width: 212px;
-  height: 44px;
-  left: 53px;
-  top: 78px;
+  margin-top: 25px;
   text-align: center;
   font-family: Montserrat;
   font-weight: 900;
   font-size: 18px;
   line-height: 1.21;
   text-transform: uppercase;
-  color: #dc56c5;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  width: 212px;
+  margin-left: auto;
+  margin-right: auto;
+
+  & span {
+    opacity: 0;
+    transition: all 0.4s ease;
+  }
 }
 @media screen and (min-width: $tablet) {
   .hero__title {
-    position: absolute;
-    width: 353px;
-    height: 74px;
-    left: 208px;
-    top: 40px;
-    text-align: center;
-    font-weight: 900;
     font-size: 30px;
     line-height: 1.23;
-    text-transform: uppercase;
-    color: #dc56c5;
+    width: 353px;
+    margin-top: -50px;
   }
 }
 
 @media screen and (min-width: $pc) {
   .hero__title {
-    position: absolute;
-    width: 588px;
-    height: 122px;
-    left: 345px;
-    top: 40px;
-    text-align: center;
-    font-weight: 900;
     font-size: 50px;
     line-height: 1.22;
-    text-transform: uppercase;
-    color: #dc56c5;
+    width: 590px;
+    margin-top: -68px;
   }
 }
 
-@media screen and (max-width: 767px) {
-  .image__logo {
-    display: block;
-    width: 213.97px;
-    height: 180px;
-    left: -107.49px;
-    top: -90px;
-    background: linear-gradient(
-      136.07deg,
-      rgba(196, 196, 196, 0.03) 10.75%,
-      rgba(196, 196, 196, 0) 92.33%
-    );
+.logo-box {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 60px;
+  height: 30px;
+  margin: 24px 0 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: $tablet) {
+  .logo {
+    width: 100px;
+    height: 50px;
+    margin: 40px 0 0 40px;
+  }
+}
+@media (min-width: $pc) {
+  .logo {
+    width: 136px;
+    height: 68px;
   }
 }
 
-@media screen and (min-width: 767px) {
-  .image__logo {
-    display: none;
+.logo-bg {
+  position: absolute;
+  z-index: 0;
+  width: 213.97px;
+  height: 180px;
+  left: -107.49px;
+  top: -90px;
+  border-radius: 100%;
+  background: linear-gradient(136.07deg, rgba(0, 0, 0, 0.9) 10.75%, rgba(0, 0, 0, 0.3) 92.33%);
+  backdrop-filter: blur(20px);
+}
+
+@media (min-width: $tablet) {
+  .logo-bg {
+    position: absolute;
+    width: 359px;
+    height: 302px;
+    left: -179px;
+    top: -151px;
+    background: linear-gradient(136.07deg, rgb(0 0 0 / 100%) 44.75%, rgba(196, 196, 196, 0) 92.33%);
+    backdrop-filter: blur(30px);
   }
 }
 
-.image__logo-tablet {
-  display: none;
-  width: 302px;
-  height: 359px;
-  left: 179px;
-  top: -151px;
-  background: linear-gradient(
-    136.07deg,
-    rgba(196, 196, 196, 0.03) 10.75%,
-    rgba(196, 196, 196, 0) 92.33%
-  );
-}
-
-@media screen and (min-width: 768px) {
-  .image__logo-tablet {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .image__logo-tablet {
-    width: 402px;
-    height: 477px;
-    left: 239px;
+@media (min-width: $pc) {
+  .logo-bg {
+    position: absolute;
+    width: 477px;
+    height: 402px;
+    left: -238px;
     top: -201px;
+  }
+}
 
-    background: linear-gradient(
-      136.07deg,
-      rgba(196, 196, 196, 0.03) 10.75%,
-      rgba(196, 196, 196, 0) 92.33%
-    );
-    pointer-events: none;
+.overlay {
+  position: absolute;
+  height: 366px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 11, 11, 0.5);
+  z-index: 0;
+  @media (min-width: $pc) {
+    height: 446px;
+  }
+}
+
+.overlay2 {
+  position: absolute;
+  width: 100%;
+  height: 102px;
+  left: 0px;
+  top: 264px;
+
+  background: linear-gradient(180deg, rgba(13, 13, 13, 0) 0%, rgba(14, 14, 14, 0.8) 100%);
+  @media (min-width: $pc) {
+    top: 344px;
   }
 }
