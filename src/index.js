@@ -26,11 +26,21 @@ scrollToTop();
 
 const refs = getRefs();
 
-document.addEventListener('DOMContentLoaded', () => {
-    let showEv = new Date()
-    paginator(showEv);
-});
+  document.addEventListener('DOMContentLoaded', renderTrending);
 
+function renderTrending() {
+//// render 1 page
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+    .then(response => response.json())
+    .then(data => {
+      return data._embedded.events
+    })
+    .then(data => eventsCardTpl(data))
+    .then(el => {
+      refs.container.innerHTML = ''
+      refs.container.insertAdjacentHTML('beforeend', el)
+    })
+}
 
 refs.input.addEventListener('input', debounce(onSearch, 700));
 refs.countrySelect.addEventListener('input', onSelect);
