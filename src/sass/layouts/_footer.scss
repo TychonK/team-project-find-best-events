@@ -33,9 +33,34 @@
   }
 }
 
+@keyframes pulse-heart {
+  0% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 10px $heart);
+  }
+  
+  20% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 2px $heart);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    filter: drop-shadow(0 0 10px $heart);
+  }
+}
+
+.separator {
+  color: rgb(71, 71, 71);
+}
+
 .footer-heart {
+  display: inline-block;
+  margin-left: 7px;
+  margin-right: 7px;
   font-size: 20px;
   color: $heart;
+  animation: pulse-heart 1.5s infinite;
 }
 
 .footer-students {
