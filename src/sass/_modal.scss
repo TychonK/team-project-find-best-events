@@ -147,8 +147,8 @@
 .modal__image--big {
   display: block;
   display: none;
-  height: 100%;
   width: 360px;
+
   margin-right: auto;
   margin-left: auto;
   text-align: -webkit-center;
@@ -158,10 +158,12 @@
   @media screen and (min-width: $tablet) {
     display: block;
     width: 233px;
+    height: 416px;
   }
 
   @media screen and (min-width: $pc) {
     width: 360px;
+    height: 641px;
   }
 }
 .modal-content__container {

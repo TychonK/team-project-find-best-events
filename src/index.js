@@ -39,6 +39,7 @@ function renderTrending() {
     .then(el => {
       refs.container.innerHTML = ''
       refs.container.insertAdjacentHTML('beforeend', el)
+      animateGallery();
     })
 }
 
@@ -136,9 +137,11 @@ refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
   event.preventDefault();
-  if (!event.target.classList === 'event__list')
-  {console.log('мимо');
-return}
+  console.log(event.target.classList.value)
+  if (event.target.classList.value != 'event__list' && event.target.classList.value != 'event__square' && event.target.classList.value != 'event__image' && event.target.classList.value != 'event__content' && event.target.classList.value != 'event__title' && event.target.classList.value != 'event__date' && event.target.classList.value != 'event__place') {
+     return;
+  }
+
   eventModalSrc = event.target.dataset.src;
   eventModalAuthor = event.target.alt;
   ur = event.target.dataset.url;
@@ -227,7 +230,8 @@ function createModalMoreBtnContent(eventModalAuthor) {
     .then(el => {
       refs.container.innerHTML = ''
       // console.log(el)
-      refs.container.insertAdjacentHTML('beforeend', el)
+      refs.container.insertAdjacentHTML('beforeend', el);
+      animateGallery();
    })
   // refs.container.insertAdjacentHTML('beforeend', el));
   // 
