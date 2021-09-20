@@ -118,6 +118,7 @@ function resetSearch() {
 // ---/-------модалка------------------------------------------------
 let eventModalSrc = '';
 let eventModalAuthor = '';
+let ur = '';
 refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
@@ -127,10 +128,20 @@ function onEventOpenClick(event) {
 return}
   eventModalSrc = event.target.dataset.src;
   eventModalAuthor = event.target.alt;
+  ur = event.target.dataset.url;
+  // console.log(event.target.dataset.url);
 
   onOpenModal();
   createModalContent(eventModalSrc)
 }
+
+refs.modalBtnTickets.addEventListener('click', onBuyTicketsBtnClick)
+
+function onBuyTicketsBtnClick() {
+  // console.log(ur);
+window.open(`${ur}`)
+}
+
 
  function createModalContent(eventModalSrc) {
   return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
@@ -155,7 +166,8 @@ refs.modalCloseBtn.addEventListener('click', onCloseModal);
 function onCloseModal(){
  refs.modalContainer.classList.remove("is-open");
  clearModalContent()
- document.querySelector("body").classList.remove("no-scroll")
+  document.querySelector("body").classList.remove("no-scroll")
+  // refs.container.innerHTML = ''
 };
 
 function clearModalContent() {

@@ -19,6 +19,7 @@ export default function getRefs() {
   modalImgBig: document.querySelector('.modal__image--big'),
   modalContentContainer: document.querySelector('.modal-content__container'),
   modalRenderContainer: document.querySelector('.modal-render_container'),
-  modalMoreBtn: document.querySelector('.modal-btn_more')
+    modalMoreBtn: document.querySelector('.modal-btn_more'),
+  modalBtnTickets: document.querySelector('.modal-btn_tickets') 
   };
 }
