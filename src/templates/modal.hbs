@@ -5,48 +5,53 @@
 </div>
 
 <div class="modal-content__container ">
-<div class="modal-content__item">
-<div class="modal__image--big">
-    <img class="modal__image" src="{{images.2.url}}" alt="{{name}}"/>
-</div>
+    <div class="modal-content__item">
+        <div class="modal__image--big">
+            <img class="modal__image" src="{{images.2.url}}" alt="{{name}}" />
+        </div>
 
-</div>
+    </div>
 
-<div class="modal-content__item">
-    <ul class="modal-info__list ">
-        <h3 class="modal-info__topic">INFO</h3>
-        <p class="modal-info__text info__text">{{info}}</p>
-        </li>
-        <li class="modal-info__item">
-            <h3 class="modal-info__topic">WHO</h3>
-            <p>{{name}}</p>
-        </li>
-        <li class="modal-info__item">
-            <h3 class="modal-info__topic">WHEN</h3>
-            <p class="modal-info__text">{{dates.start.localDate}}</p>
-            <p class="modal-info__text">{{dates.start.localTime}}</p>
-        </li>
-        <li class="modal-info__item">
-            <h3 class="modal-info__topic">WHERE</h3>
-            <p class="modal-info__text">{{dates.timezone}}</p>
-        </li>
-        <li class="modal-info__item">
-            <h3 class="modal-info__topic">PRICES</h3>
-            <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}} {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
-            </p>
-            {{!-- <button type="button" class="modal-btn_tickets">BUY TICKETS</button> --}}
-            <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}}
-                {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
-            </p>
-{{#if products}}
-<button type="button" class="modal-btn_tickets">BUY TICKETS</button>
-{{/if}}
+    <div class="modal-content__item">
+        <ul class="modal-info__list ">
+            <h3 class="modal-info__topic">INFO</h3>
+            <p class="modal-info__text info__text">
+                {{#if info}}
+                {{info}}
+                {{else}}
+                There is no information about this event
+                {{/if}}</p>
+            </li>
+            <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHO</h3>
+                <p>{{name}}</p>
+            </li>
+            <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHEN</h3>
+                <p class="modal-info__text">{{dates.start.localDate}}</p>
+                <p class="modal-info__text">{{dates.start.localTime}}</p>
+            </li>
+            <li class="modal-info__item">
+                <h3 class="modal-info__topic">WHERE</h3>
+                <p class="modal-info__text">{{dates.timezone}}</p>
+            </li>
+            <li class="modal-info__item">
+                <h3 class="modal-info__topic">PRICES</h3>
+                <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}}
+                    {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
+                </p>
+                {{!-- <button type="button" class="modal-btn_tickets">BUY TICKETS</button> --}}
+                <p class="price-tickets"><svg class='icon-ticket' height='24' width='24'></svg>{{priceRanges.0.type}}
+                    {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
+                </p>
+                {{#if products}}
+                <button type="button" id="buy-tickets" class="modal-btn_tickets">BUY TICKETS</button>
+                {{/if}}
 
-            {{!-- <button type="button" class="modal-btn_tickets">BUY TICKETS</button> --}}
-        </li>
-    </ul>
-</div>
-{{!-- 
+                {{!-- <button type="button" class="modal-btn_tickets">BUY TICKETS</button> --}}
+            </li>
+        </ul>
+    </div>
+    {{!-- 
 </div><button type="button" class="modal-btn_more">MORE FROM THIS AUTHOR</button> --}}
-{{/each}}
-
+    {{/each}}
