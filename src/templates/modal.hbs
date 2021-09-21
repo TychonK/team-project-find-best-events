@@ -15,7 +15,12 @@
 <div class="modal-content__item">
     <ul class="modal-info__list ">
         <h3 class="modal-info__topic">INFO</h3>
-        <p class="modal-info__text info__text">{{info}}</p>
+        <p class="modal-info__text info__text">
+             {{#if info}}
+        {{info}}
+      {{else}}
+        There is no information about this event
+      {{/if}}</p>
         </li>
         <li class="modal-info__item">
             <h3 class="modal-info__topic">WHO</h3>
