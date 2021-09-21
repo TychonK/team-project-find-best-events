@@ -218,7 +218,10 @@ function onModalMoreBtnClick(event) {
 
 function createModalMoreBtnContent(eventModalAuthor) {
   resetSearch()
-  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${eventModalAuthor}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
+  let array = eventModalAuthor.split(" ");
+  let keyWord = array[0];
+  console.log(keyWord);
+  return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyWord}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
