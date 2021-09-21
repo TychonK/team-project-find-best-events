@@ -26,10 +26,10 @@ scrollToTop();
 
 const refs = getRefs();
 
-  document.addEventListener('DOMContentLoaded', renderTrending);
+document.addEventListener('DOMContentLoaded', renderTrending);
 
 function renderTrending() {
-//// render 1 page
+  //// render 1 page
   return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?keyword=&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
     .then(response => response.json())
     .then(data => {
@@ -79,24 +79,24 @@ function onSearch(e) {
 
 
 function paginator() {
-    $('.paginator').pagination({
-        dataSource: function (done) {
-            $.ajax({
-                type: 'GET',
-                beforeSend: function() {
-                    document.querySelector(".searching").innerHTML = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
-                },
-                url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
-                success: function (response) {
-                    document.querySelector(".searching").innerHTML = "";
-                    if (response._embedded === undefined) {
-                        error({ text: "No events", delay: 2000 })
-                        refs.container.innerHTML = "";
-                        throw new Error();  
-                    }
-                    done(response._embedded.events);
-                }
-            });
+  $('.paginator').pagination({
+    dataSource: function (done) {
+      $.ajax({
+        type: 'GET',
+        beforeSend: function () {
+          document.querySelector(".searching").innerHTML = '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
+        },
+        url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+        success: function (response) {
+          document.querySelector(".searching").innerHTML = "";
+          if (response._embedded === undefined) {
+            error({ text: "No events", delay: 2000 })
+            refs.container.innerHTML = "";
+            throw new Error();
+          }
+          done(response._embedded.events);
+        }
+      });
     },
     pageSize: 24,
     locator: '.events',
@@ -111,7 +111,7 @@ function paginator() {
       console.log(pagination);
       refs.container.innerHTML = '';
       refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(data));
-      
+
       if (document.querySelectorAll(".event__list").length === 1) {
         document.querySelector(".event__list").style.margin = 0;
       }
@@ -139,7 +139,7 @@ function onEventOpenClick(event) {
   event.preventDefault();
   console.log(event.target.classList.value)
   if (event.target.classList.value != 'event__list' && event.target.classList.value != 'event__square' && event.target.classList.value != 'event__image' && event.target.classList.value != 'event__content' && event.target.classList.value != 'event__title' && event.target.classList.value != 'event__date' && event.target.classList.value != 'event__place') {
-     return;
+    return;
   }
 
   eventModalSrc = event.target.dataset.src;
@@ -148,28 +148,29 @@ function onEventOpenClick(event) {
   // console.log(event.target.dataset.url);
 
   onOpenModal();
-  createModalContent(eventModalSrc)
+  createModalContent(eventModalSrc);
+  const onBuyTickets = document.querySelector('#buy-tickets');
+  console.log(onBuyTickets);
+  // onBuyTickets.addEventListener('click', onBuyTicketsBtnClick);
 }
-
-refs.modalBtnTickets.addEventListener('click', onBuyTicketsBtnClick)
 
 function onBuyTicketsBtnClick() {
   // console.log(ur);
-window.open(`${ur}`)
+  window.open(`${ur}`)
 }
 
 
- function createModalContent(eventModalSrc) {
+function createModalContent(eventModalSrc) {
   return fetch(`https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`)
     .then(response => response.json())
     .then(data => {
       return data._embedded.events
       // console.log(data._embedded.events)
-     })
+    })
     .then(data => eventModalTpl(data))
     .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el));
-    };
-    
+};
+
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeyPress)
@@ -179,9 +180,9 @@ function onOpenModal() {
 
 refs.modalCloseBtn.addEventListener('click', onCloseModal);
 
-function onCloseModal(){
- refs.modalContainer.classList.remove("is-open");
- clearModalContent()
+function onCloseModal() {
+  refs.modalContainer.classList.remove("is-open");
+  clearModalContent()
   document.querySelector("body").classList.remove("no-scroll")
   // refs.container.innerHTML = ''
 };
@@ -192,14 +193,14 @@ function clearModalContent() {
 
 refs.modalOverlay.addEventListener('click', onOverlayClick);
 
-function onOverlayClick(e){
- if(e.target === e.currentTarget){
-  onCloseModal()
-}
+function onOverlayClick(e) {
+  if (e.target === e.currentTarget) {
+    onCloseModal()
+  }
 };
 
-function onEscKeyPress(e){
-  if(e.code === 'Escape'){
+function onEscKeyPress(e) {
+  if (e.code === 'Escape') {
     onCloseModal()
   }
 };
@@ -212,8 +213,8 @@ function onModalMoreBtnClick(event) {
   onCloseModal()
   resetSearch()
   createModalMoreBtnContent(eventModalAuthor)
-      //  console.log(eventModalAuthor);
- 
+  //  console.log(eventModalAuthor);
+
 }
 
 function createModalMoreBtnContent(eventModalAuthor) {
@@ -228,16 +229,16 @@ function createModalMoreBtnContent(eventModalAuthor) {
       return data._embedded.events
       // console.log(eventModalAuthor);
       // console.log(data._embedded.events)
-     })
+    })
     .then(data => eventsCardTpl(data))
     .then(el => {
       refs.container.innerHTML = ''
       // console.log(el)
       refs.container.insertAdjacentHTML('beforeend', el);
       animateGallery();
-   })
+    })
   // refs.container.insertAdjacentHTML('beforeend', el));
   // 
- 
+
 };
-    
+
