@@ -1,5 +1,8 @@
 .footer {
-  margin-bottom: 27px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
   margin-top: 60px;
 
   /* Animation */
@@ -10,12 +13,16 @@
   transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715, 0.4);
   transition: 3s;
 
+  @media screen and (max-width: $mobile) {
+    margin-bottom: 27px;
+  }
+
   @media screen and (min-width: $tablet) {
     margin-bottom: 18px;
   }
 
   @media screen and (min-width: $pc) {
-    margin-top: 80px;
+    margin-top: 19px;
   }
 }
 
@@ -38,12 +45,12 @@
     transform: scale(0.95);
     filter: drop-shadow(0 0 10px $heart);
   }
-  
+
   20% {
     transform: scale(1.15);
     filter: drop-shadow(0 0 2px $heart);
   }
-  
+
   100% {
     transform: scale(0.95);
     filter: drop-shadow(0 0 10px $heart);
