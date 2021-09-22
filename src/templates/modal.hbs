@@ -38,7 +38,7 @@
             </li>
             <li class="modal-info__item">
                 <h3 class="modal-info__topic">PRICES</h3>
-
+{{#if priceRanges}}
                 {{#if priceRanges.0.type}}
                     <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z" fill="#0E0E0E"/>
@@ -89,6 +89,9 @@
                {{#if products}}
                 <button type="button" id="buy-tickets-third" class="modal-btn_tickets">BUY TICKETS</button>
                 {{/if}}
+                {{/if}}
+                {{else}}
+                There is no information
                 {{/if}}
             </li>
         </ul>
