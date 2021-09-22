@@ -135,6 +135,9 @@ let eventModalSrc = '';
 let eventModalAuthor = '';
 let ur = '';
 let onBuyTickets = '';
+let onBuyTicketsSecond = '';
+let onBuyTicketsThird = '';
+
 refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
@@ -183,8 +186,12 @@ function createModalContent(eventModalSrc) {
     .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el))
     .then(() => {
       onBuyTickets = document.querySelector('#buy-tickets');
+      onBuyTicketsSecond = document.querySelector('#buy-tickets-second');
+      onBuyTicketsThird = document.querySelector('#buy-tickets-third');
       console.log(onBuyTickets);
       onBuyTickets.addEventListener('click', onBuyTicketsBtnClick);
+      onBuyTicketsSecond.addEventListener('click', onBuyTicketsBtnClick);
+      onBuyTicketsThird.addEventListener('click', onBuyTicketsBtnClick);
     });
 }
 
