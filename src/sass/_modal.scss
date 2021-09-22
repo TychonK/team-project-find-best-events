@@ -217,7 +217,8 @@
     margin-bottom: 20px;
   }
 }
-.modal-info__topic:not(:last-child) {
+
+.modal-info__topic {
   margin-bottom: 5px;
   font-weight: 600;
   font-size: 20px;
@@ -228,6 +229,10 @@
     margin-bottom: 7px;
     font-size: 24px;
   }
+}
+
+.modal-info__topic:last-child {
+  margin-bottom: 0;
 }
 
 .modal-info__text {
@@ -281,63 +286,64 @@
 
 .modal-btn_tickets {
   display: inline-block;
+  padding: 9px 19px 11px;
+  margin-bottom: 20px;
+  justify-content: center;
   border-radius: 5px;
-  //   border: 1px solid #4c00fe;
-  //   font-family: Montserrat;
-  //   font-style: normal;
-  //   font-weight: 500;
-  //   font-size: 16px;
-  //   line-height: 1.25;
-  //   cursor: pointer;
+  border: 1px solid #4c00fe;
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
   color: #ffffff;
   background: #4c00fe;
-  padding: 9px 19px 11px;
-  //   justify-content: center;
-  //   // margin: auto 0 auto 450px;
-  //   margin-left: 550px;
-  //   margin-top: 20;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 31px;
+  }
 }
 
-// .modal-btn_tickets:hover,
-// .modal-btn_tickets:focus {
-//   background-color: #ffffff;
-//   color: #4c00fe;
-//   border: 1px solid #dc56c5;
-// }
+.modal-btn_tickets:hover,
+.modal-btn_tickets:focus {
+  background-color: #ffffff;
+  color: #4c00fe;
+  border: 1px solid #dc56c5;
+  cursor: pointer;
+}
 
 .button-more {
   text-align: center;
 }
 
 .modal-btn_more {
-  display: inline-block;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 10px 3px;
+
   border-radius: 5px;
   border: 1px solid #4c00fe;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
-  cursor: pointer;
+  font-size: 16px;
+  line-height: 1.25;
+
   color: #4c00fe;
   background: none;
-  padding: 10px 3px;
 
-  width: 230px;
-  height: 40px;
-
-  margin: 0 auto 0 20px;
-
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $tablet) and (max-width: 1279.98px) {
+    margin-top: 23px;
+    padding: 10px 15px;
     border: 1px solid #dc56c5;
-    width: 255px;
-    margin-left: 175px;
-    margin-right: auto;
-    margin-top: 43px;
   }
 
   @media screen and (min-width: $pc) {
-    margin-top: 45px;
-    margin-left: 337px;
+    margin-top: 14px;
+    padding: 10px 15px;
+    // border: 1px solid #4c00fe;
   }
 }
 
@@ -346,4 +352,5 @@
   background-color: #4c00fe;
   color: #fff;
   border: 1px solid #dc56c5;
+  cursor: pointer;
 }
