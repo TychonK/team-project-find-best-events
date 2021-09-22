@@ -38,7 +38,7 @@
  
     <main>
       <include src="./partials/main.html"></include>
-      <button onclick="topFunction()" id="scrollBtn" class="scrollBtn" title="Go to top">
+      <button id="scrollBtn" class="scrollBtn" title="Go to top">
         <svg class="scroll-icon">
           <use href="./images/to-top.svg#scroll"></use>
         </svg>
@@ -51,11 +51,5 @@
 
     <script src="./index.js"></script>
     <script src="./js/modal.js"></script>
-    <script>
-      function topFunction() {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-      }
-      </script>
   </body>
 </html>
