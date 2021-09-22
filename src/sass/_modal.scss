@@ -211,33 +211,104 @@
 }
 
 .modal-info__item:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 20px;
+  }
 }
 .modal-info__topic:not(:last-child) {
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
   color: #dc56c5;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 7px;
+    font-size: 24px;
+  }
 }
 
 .modal-info__text {
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.2;
   color: #0e0e0e;
+
+  @media screen and (min-width: $pc) {
+    font-size: 18px;
+  }
 }
+
 .info__text {
   height: 100px;
   overflow-x: hidden;
   margin-bottom: 10px;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 20px;
+  }
 }
+
+.text-margin {
+  margin-bottom: 3px;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 5px;
+  }
+}
+
+.barcode-icon {
+  margin-right: 13px;
+  width: 24px;
+  height: 16px;
+  vertical-align: top;
+
+  @media screen and (min-width: $pc) {
+    width: 29px;
+    height: 19px;
+  }
+}
+
 .price-tickets {
   margin-bottom: 10px;
+
+  @media screen and (min-width: $pc) {
+    margin-bottom: 20px;
+  }
 }
+
+.modal-btn_tickets {
+  display: inline-block;
+  border-radius: 5px;
+  //   border: 1px solid #4c00fe;
+  //   font-family: Montserrat;
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 16px;
+  //   line-height: 1.25;
+  //   cursor: pointer;
+  color: #ffffff;
+  background: #4c00fe;
+  padding: 9px 19px 11px;
+  //   justify-content: center;
+  //   // margin: auto 0 auto 450px;
+  //   margin-left: 550px;
+  //   margin-top: 20;
+}
+
+// .modal-btn_tickets:hover,
+// .modal-btn_tickets:focus {
+//   background-color: #ffffff;
+//   color: #4c00fe;
+//   border: 1px solid #dc56c5;
+// }
+
 .button-more {
   text-align: center;
 }
+
 .modal-btn_more {
   display: inline-block;
   border-radius: 5px;
@@ -276,29 +347,3 @@
   color: #fff;
   border: 1px solid #dc56c5;
 }
-
-// .modal-btn_tickets {
-//   display: inline-block;
-//   border-radius: 5px;
-//   border: 1px solid #4c00fe;
-//   font-family: Montserrat;
-//   font-style: normal;
-//   font-weight: 500;
-//   font-size: 16px;
-//   line-height: 1.25;
-//   cursor: pointer;
-//   color: #ffffff;
-//   background: #4c00fe;
-//   padding: 10px 19px;
-//   justify-content: center;
-//   // margin: auto 0 auto 450px;
-//   margin-left: 550px;
-//   margin-top: 20;
-// }
-
-// .modal-btn_tickets:hover,
-// .modal-btn_tickets:focus {
-//   background-color: #ffffff;
-//   color: #4c00fe;
-//   border: 1px solid #dc56c5;
-// }
