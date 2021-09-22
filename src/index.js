@@ -161,14 +161,16 @@ function createModalContent(eventModalSrc) {
 
     .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el))
     .then(() => {
-      onBuyTickets = document.querySelector('#buy-tickets');
+      
+        onBuyTickets = document.querySelector('#buy-tickets');
       onBuyTicketsSecond = document.querySelector('#buy-tickets-second');
       onBuyTicketsThird = document.querySelector('#buy-tickets-third');
       console.log(onBuyTickets);
       onBuyTickets.addEventListener('click', onBuyTicketsBtnClick);
       onBuyTicketsSecond.addEventListener('click', onBuyTicketsBtnClick);
-      onBuyTicketsThird.addEventListener('click', onBuyTicketsBtnClick);
-    });
+      onBuyTicketsThird.addEventListener('click', onBuyTicketsBtnClick);}
+      
+    );
 }
 
 function onOpenModal() {
