@@ -70,11 +70,12 @@
 body {
   background: #0e0e0e;
   background-image: url(../images/bg-pc.svg), url(../images/noise-body.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: 100%;
+  
   @media (max-width: 1279px) {
     background-image: url(../images/bg-tablet.svg);
-    background-size: 768px 116%;
+    background-size: 768px;
   }
   &.no-scroll {
     overflow: hidden;

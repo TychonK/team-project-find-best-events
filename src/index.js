@@ -19,6 +19,7 @@ import animate from './js/textAnimation';
 import animateGallery from './js/gallery-animation';
 /* Scroll to top */
 import scrollToTop from './js/scrollToTop';
+import galleryAnimation from './js/gallery-animation';
 /* Code */
 
 animate();
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 function renderTrending() {
   //// render 1 page
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=&size=24&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
   )
     .then(response => response.json())
     .then(data => {
@@ -49,86 +50,60 @@ refs.input.addEventListener('input', debounce(onSearch, 700));
 refs.countrySelect.addEventListener('input', onSelect);
 
 let searchQuery;
-let selectedCountry = '';
-
-// paginator();
+let selectedCountry;
+const api = new EventsApiService();
 
 function onSelect(e) {
   e.preventDefault();
   selectedCountry = e.target.value.slice(-2);
-  console.log(selectedCountry);
-  refs.container.innerHTML = '';
   if (selectedCountry === '') {
     return;
   }
-  paginator();
+  if (selectedCountry === "ry") {
+    selectedCountry = '';
+  }
+  refs.container.innerHTML = '';
+  api.country = selectedCountry;
+  api.fetchEvents().then(data => markupEvents(data))
+}
+
+function markupEvents(e) {
+  refs.container.innerHTML = eventsCardTpl(e);
+  animateGallery();
 }
 
 function onSearch(e) {
   e.preventDefault();
   resetSearch();
   searchQuery = e.target.value;
-  searchQuery;
-  //console.log(searchQuery)
   if (searchQuery === '') {
-    document.querySelector('.paginator').innerHTML = '';
-    paginator();
     alert({ text: 'Please, specify you query', delay: 2000 });
-    return;
   }
-  paginator();
+  api.foundedEvent = searchQuery;
+  api.fetchEvents().then(data => markupEvents(data)).catch(error({text: "Sorry, we couldn't find any events. Try to change your queries.", delay: 3000}))
 }
-
-function paginator() {
-  $('.paginator').pagination({
-    dataSource: function (done) {
-      $.ajax({
-        type: 'GET',
-        beforeSend: function () {
-          document.querySelector('.searching').innerHTML =
-            '<div class="sk-cube-grid"><div class="sk-cube sk-cube1"></div><div class="sk-cube sk-cube2"></div><div class="sk-cube sk-cube3"></div><div class="sk-cube sk-cube4"></div><div class="sk-cube sk-cube5"></div><div class="sk-cube sk-cube6"></div><div class="sk-cube sk-cube7"></div><div class="sk-cube sk-cube8"></div><div class="sk-cube sk-cube9"></div></div>';
-        },
-        url: `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${searchQuery}&countryCode=${selectedCountry}&size=200&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
-        success: function (response) {
-          document.querySelector('.searching').innerHTML = '';
-          if (response._embedded === undefined) {
-            error({ text: 'No events', delay: 2000 });
-            refs.container.innerHTML = '';
-            throw new Error();
-          }
-          done(response._embedded.events);
-        },
-      });
-    },
-    pageSize: 24,
-    locator: '.events',
-    totalNumberLocator: function (response) {
-      return response._embedded.events.length;
-    },
-
-    prevText: '<',
-    nextText: '>',
-    callback: function (data, pagination) {
-      // template method of yourself
-      console.log(pagination);
-      refs.container.innerHTML = '';
-      refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(data));
-
-      if (document.querySelectorAll('.event__list').length === 1) {
-        document.querySelector('.event__list').style.margin = 0;
-      }
-      animateGallery();
-    },
-  });
-}
-
-// function markupEvents(e) {
-//   refs.container.insertAdjacentHTML('beforeend', eventsCardTpl(e));
-// }
 
 function resetSearch() {
   refs.container.innerHTML = '';
 }
+
+window.addEventListener('scroll', () => {
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+  if (scrollTop + clientHeight >= scrollHeight - 5) {
+          api.incrementPage(1000)
+    api.fetchEvents().then(function (data) {
+      refs.container.insertAdjacentHTML("beforeend", eventsCardTpl(data))
+      animateGallery();
+    });
+        }
+    }, {
+        passive: true
+    });
 
 // ---/-------модалка------------------------------------------------
 let eventModalSrc = '';
@@ -157,6 +132,7 @@ function onEventOpenClick(event) {
 
   eventModalSrc = event.target.dataset.src;
   eventModalAuthor = event.target.alt;
+  eventModalAuthor = event.target.dataset.alt;
   ur = event.target.dataset.url;
   // console.log(event.target.dataset.url);
 
@@ -240,6 +216,7 @@ function onModalMoreBtnClick(event) {
 
 function createModalMoreBtnContent(eventModalAuthor) {
   resetSearch();
+  console.log(eventModalAuthor)
   let array = eventModalAuthor.split(' ');
   let keyWord = array[0];
   console.log(keyWord);
