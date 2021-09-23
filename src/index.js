@@ -82,8 +82,9 @@ function markupEvents(e) {
 function onSearch(e) {
   e.preventDefault();
   resetSearch();
-  searchQuery = e.target.value;
+  searchQuery = encodeURIComponent(e.target.value);
   if (searchQuery === '') {
+    api.foundedEvent = searchQuery
     return PNotifyEmptyInput();
   } else { 
   api.foundedEvent = searchQuery;
