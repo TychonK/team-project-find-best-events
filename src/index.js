@@ -2,10 +2,7 @@ import './sass/main.scss';
 import './js/filter-by-countries.js';
 
 import debounce from 'lodash.debounce';
-
-import { info, error, alert } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
+import { PNotifyEmptyInput, PNotifyError, PNotifyForCountry } from './js/pnotify.js';
 
 import getRefs from './js/refs';
 import eventModalTpl from './templates/modal.hbs';
@@ -64,7 +61,12 @@ function onSelect(e) {
   }
   refs.container.innerHTML = '';
   api.country = selectedCountry;
-  api.fetchEvents().then(data => markupEvents(data))
+  api.fetchEvents().then(
+     data => {
+        if (data) markupEvents(data);
+        else PNotifyForCountry();
+      }
+  )
 }
 
 function markupEvents(e) {
@@ -77,10 +79,17 @@ function onSearch(e) {
   resetSearch();
   searchQuery = e.target.value;
   if (searchQuery === '') {
-    alert({ text: 'Please, specify you query', delay: 2000 });
-  }
+    return PNotifyEmptyInput();
+  } else { 
   api.foundedEvent = searchQuery;
-  api.fetchEvents().then(data => markupEvents(data)).catch(error({text: "Sorry, we couldn't find any events. Try to change your queries.", delay: 3000}))
+    api.fetchEvents().then(
+      data => {
+        console.log(data);
+        if (data) markupEvents(data);
+        else PNotifyError();
+      })
+    // .catch(error({ text: "We have a problem", delay: 3000 }))
+}
 }
 
 function resetSearch() {

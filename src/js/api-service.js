@@ -14,8 +14,8 @@ export default class EventsApiService {
             .then(data => {
                 this.incrementPage(data.page.totalPages);
                 console.log(data);
-
-                return data._embedded.events;
+                if (data.hasOwnProperty("_embedded"))
+                    return data._embedded.events;
             });
     }
 
