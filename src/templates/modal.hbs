@@ -53,7 +53,7 @@
                 </p>
 
                 {{#if products}}
-                <button type="button" id="buy-tickets" class="modal-btn_tickets">BUY TICKETS</button>
+                <a href="{{products.0.url}}" target="_blank"  id="buy-tickets" class="modal-btn_tickets">BUY TICKETS</a>
                 {{/if}}
                 {{/if}}
 
@@ -70,7 +70,7 @@
                     {{priceRanges.1.min}} - {{priceRanges.1.max}} {{priceRanges.1.currency}} </p>
                 </p>
                {{#if products}}
-                <button type="button" id="buy-tickets-second" class="modal-btn_tickets">BUY TICKETS</button>
+                <a href="{{products.1.url}}" target="_blank" id="buy-tickets-second" class="modal-btn_tickets">BUY TICKETS</a>
                 {{/if}}
                 {{/if}}
 
@@ -87,7 +87,7 @@
                     {{priceRanges.2.min}} - {{priceRanges.2.max}} {{priceRanges.2.currency}} </p>
                 </p>
                {{#if products}}
-                <button type="button" id="buy-tickets-third" class="modal-btn_tickets">BUY TICKETS</button>
+                <a href="{{products.2.url}}" target="_blank" id="buy-tickets-third" class="modal-btn_tickets">BUY TICKETS</a>
                 {{/if}}
                 {{/if}}
                 {{else}}

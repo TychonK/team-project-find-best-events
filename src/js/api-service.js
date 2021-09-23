@@ -13,7 +13,7 @@ export default class EventsApiService {
             .then(r => r.json())
             .then(data => {
                 this.incrementPage(data.page.totalPages);
-                // console.log(data);
+                console.log(data);
 
                 return data._embedded.events;
             });
