@@ -117,7 +117,7 @@ refs.eventsGallery.addEventListener('click', onEventOpenClick);
 
 function onEventOpenClick(event) {
   event.preventDefault();
-  console.log(event.target.classList.value);
+  // console.log(event.target.classList.value);
   if (
     event.target.classList.value != 'event__list' &&
     event.target.classList.value != 'event__square' &&
@@ -160,17 +160,17 @@ function createModalContent(eventModalSrc) {
     .then(data => eventModalTpl(data))
 
     .then(el => refs.modalRenderContainer.insertAdjacentHTML('beforeend', el))
-    .then(() => {
+    // .then(() => {
       
-        onBuyTickets = document.querySelector('#buy-tickets');
-      onBuyTicketsSecond = document.querySelector('#buy-tickets-second');
-      onBuyTicketsThird = document.querySelector('#buy-tickets-third');
-      console.log(onBuyTickets);
-      onBuyTickets.addEventListener('click', onBuyTicketsBtnClick);
-      onBuyTicketsSecond.addEventListener('click', onBuyTicketsBtnClick);
-      onBuyTicketsThird.addEventListener('click', onBuyTicketsBtnClick);}
+    //     onBuyTickets = document.querySelector('#buy-tickets');
+    //   onBuyTicketsSecond = document.querySelector('#buy-tickets-second');
+    //   onBuyTicketsThird = document.querySelector('#buy-tickets-third');
+    //   console.log(onBuyTickets);
+    //   onBuyTickets.addEventListener('click', onBuyTicketsBtnClick);
+    //   onBuyTicketsSecond.addEventListener('click', onBuyTicketsBtnClick);
+    //   onBuyTicketsThird.addEventListener('click', onBuyTicketsBtnClick);}
       
-    );
+    // );
 }
 
 function onOpenModal() {
