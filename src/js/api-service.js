@@ -1,3 +1,8 @@
+const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
+const KEY = 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M';
+// backup key!
+// const KEY = 'jhkkj2iyFlD2xYmqlTxa2m9jlL7PbZrp';
+
 export default class EventsApiService {
     constructor() {
         this.foundedEvent = '';
@@ -7,15 +12,15 @@ export default class EventsApiService {
 
     fetchEvents() {
         const url =
-            `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${this.foundedEvent}&countryCode=${this.country}&size=24&page=${this.page}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`;
+            `${BASE_URL}/events.json?keyword=${this.foundedEvent}&countryCode=${this.country}&size=24&page=${this.page}&apikey=${KEY}`;
 
         return fetch(url)
             .then(r => r.json())
             .then(data => {
                 this.incrementPage(data.page.totalPages);
                 console.log(data);
-
-                return data._embedded.events;
+                if (data.hasOwnProperty("_embedded"))
+                    return data._embedded.events;
             });
     }
 

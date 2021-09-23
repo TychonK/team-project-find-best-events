@@ -2,10 +2,7 @@ import './sass/main.scss';
 import './js/filter-by-countries.js';
 
 import debounce from 'lodash.debounce';
-
-import { info, error, alert } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
-import '@pnotify/core/dist/BrightTheme.css';
+import { PNotifyEmptyInput, PNotifyError, PNotifyForCountry } from './js/pnotify.js';
 
 import getRefs from './js/refs';
 import eventModalTpl from './templates/modal.hbs';
@@ -20,7 +17,12 @@ import animateGallery from './js/gallery-animation';
 /* Scroll to top */
 import scrollToTop from './js/scrollToTop';
 import galleryAnimation from './js/gallery-animation';
-/* Code */
+
+
+const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
+const KEY = 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M';
+// backup key!
+// const KEY = 'jhkkj2iyFlD2xYmqlTxa2m9jlL7PbZrp';
 
 animate();
 scrollToTop();
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 function renderTrending() {
   //// render 1 page
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=&size=24&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?keyword=&size=24&sort=random&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {
@@ -64,7 +66,12 @@ function onSelect(e) {
   }
   refs.container.innerHTML = '';
   api.country = selectedCountry;
-  api.fetchEvents().then(data => markupEvents(data))
+  api.fetchEvents().then(
+     data => {
+        if (data) markupEvents(data);
+        else PNotifyForCountry();
+      }
+  )
 }
 
 function markupEvents(e) {
@@ -77,10 +84,17 @@ function onSearch(e) {
   resetSearch();
   searchQuery = e.target.value;
   if (searchQuery === '') {
-    alert({ text: 'Please, specify you query', delay: 2000 });
-  }
+    return PNotifyEmptyInput();
+  } else { 
   api.foundedEvent = searchQuery;
-  api.fetchEvents().then(data => markupEvents(data)).catch(error({text: "Sorry, we couldn't find any events. Try to change your queries.", delay: 3000}))
+    api.fetchEvents().then(
+      data => {
+        console.log(data);
+        if (data) markupEvents(data);
+        else PNotifyError();
+      })
+    // .catch(error({ text: "We have a problem", delay: 3000 }))
+}
 }
 
 function resetSearch() {
@@ -150,7 +164,7 @@ function onBuyTicketsBtnClick() {
 
 function createModalContent(eventModalSrc) {
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?id=${eventModalSrc}&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {
@@ -223,7 +237,7 @@ function createModalMoreBtnContent(eventModalAuthor) {
   let keyWord = array[0];
   console.log(keyWord);
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyWord}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?keyword=${keyWord}&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {

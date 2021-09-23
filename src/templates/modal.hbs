@@ -38,9 +38,9 @@
             </li>
             <li class="modal-info__item">
                 <h3 class="modal-info__topic">PRICES</h3>
-{{#if priceRanges}}
-                {{#if priceRanges.0.type}}
-                    <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {{#if priceRanges}}
+            {{#if priceRanges.0.type}}
+                <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z" fill="#0E0E0E"/>
                     <path d="M11.3266 0.833496L8.10439 0.833496L8.10439 20.1668H11.3266L11.3266 0.833496Z" fill="#0E0E0E"/>
                     <path d="M16.2088 0.833496L12.9866 0.833496L12.9866 20.1668H16.2088L16.2088 0.833496Z" fill="#0E0E0E"/>
@@ -51,14 +51,16 @@
                     </svg>{{priceRanges.0.type}}
                     {{priceRanges.0.min}} - {{priceRanges.0.max}} {{priceRanges.0.currency}} </p>
                 </p>
-
                 {{#if products}}
-                <a href="{{products.0.url}}" target="_blank"  id="buy-tickets" class="modal-btn_tickets">BUY TICKETS</a>
+                    <a href="{{products.0.url}}" target="_blank"  id="buy-tickets" class="modal-btn_tickets">BUY TICKETS</a>
+                    {{else}}
+                    <p class="no-tickets">Tickets are sold out now.<br/>Check back soon</p>
                 {{/if}}
-                {{/if}}
+                
+            {{/if}}
 
-                 {{#if priceRanges.1.type}}
-                    <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {{#if priceRanges.1.type}}
+                <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z" fill="#0E0E0E"/>
                     <path d="M11.3266 0.833496L8.10439 0.833496L8.10439 20.1668H11.3266L11.3266 0.833496Z" fill="#0E0E0E"/>
                     <path d="M16.2088 0.833496L12.9866 0.833496L12.9866 20.1668H16.2088L16.2088 0.833496Z" fill="#0E0E0E"/>
@@ -70,11 +72,13 @@
                     {{priceRanges.1.min}} - {{priceRanges.1.max}} {{priceRanges.1.currency}} </p>
                 </p>
                {{#if products}}
-                <a href="{{products.0.url}}" target="_blank" id="buy-tickets-second" class="modal-btn_tickets">BUY TICKETS</a>
+                    <a href="{{products.0.url}}" target="_blank" id="buy-tickets-second" class="modal-btn_tickets">BUY TICKETS</a>
+                    {{else}}
+                        <p class="no-tickets">Tickets are sold out now.<br />Check back soon</p>
                 {{/if}}
-                {{/if}}
+            {{/if}}
 
-                {{#if priceRanges.2.type}}
+            {{#if priceRanges.2.type}}
                     <p class="price-tickets modal-info__text"><svg class="barcode-icon" width="29" height="21" viewBox="0 0 29 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.22222 0.833496L0 0.833496L0 20.1668H3.22222L3.22222 0.833496Z" fill="#0E0E0E"/>
                     <path d="M11.3266 0.833496L8.10439 0.833496L8.10439 20.1668H11.3266L11.3266 0.833496Z" fill="#0E0E0E"/>
@@ -87,12 +91,14 @@
                     {{priceRanges.2.min}} - {{priceRanges.2.max}} {{priceRanges.2.currency}} </p>
                 </p>
                {{#if products}}
-                <a href="{{products.0.url}}" target="_blank" id="buy-tickets-third" class="modal-btn_tickets">BUY TICKETS</a>
+                    <a href="{{products.0.url}}" target="_blank" id="buy-tickets-third" class="modal-btn_tickets">BUY TICKETS</a>
+                    {{else}}
+                        <p class="no-tickets">Tickets are sold out now.<br />Check back soon</p>
                 {{/if}}
-                {{/if}}
-                {{else}}
+            {{/if}}
+            {{else}}
                 There is no information
-                {{/if}}
+        {{/if}}
             </li>
         </ul>
     </div>
