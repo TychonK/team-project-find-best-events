@@ -19,6 +19,11 @@ import scrollToTop from './js/scrollToTop';
 import galleryAnimation from './js/gallery-animation';
 /* Code */
 
+const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
+const KEY = 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M';
+// backup key!
+// const KEY = 'jhkkj2iyFlD2xYmqlTxa2m9jlL7PbZrp';
+
 animate();
 scrollToTop();
 
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 function renderTrending() {
   //// render 1 page
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=&size=24&sort=random&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?keyword=&size=24&sort=random&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {
@@ -159,7 +164,7 @@ function onBuyTicketsBtnClick() {
 
 function createModalContent(eventModalSrc) {
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?id=${eventModalSrc}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?id=${eventModalSrc}&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {
@@ -232,7 +237,7 @@ function createModalMoreBtnContent(eventModalAuthor) {
   let keyWord = array[0];
   console.log(keyWord);
   return fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyWord}&apikey=PLEluArGwTZQl36ty5ijCNPhmvtWXv1M`,
+    `${BASE_URL}/events.json?keyword=${keyWord}&apikey=${KEY}`,
   )
     .then(response => response.json())
     .then(data => {
