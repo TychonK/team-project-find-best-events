@@ -17,7 +17,7 @@ import animateGallery from './js/gallery-animation';
 /* Scroll to top */
 import scrollToTop from './js/scrollToTop';
 import galleryAnimation from './js/gallery-animation';
-/* Code */
+
 
 const BASE_URL = 'https://app.ticketmaster.com/discovery/v2';
 const KEY = 'PLEluArGwTZQl36ty5ijCNPhmvtWXv1M';
