@@ -1,58 +1,28 @@
-# Parcel boilerplate
+🌍 **Event Booster - Discover Global Events** 🌍
 
-## Скрытые файлы
+Event Booster is a dynamic web application that brings the world of events to your fingertips. Explore and stay updated on events happening worldwide with ease. Whether you're an event enthusiast, traveler, or just curious, Event Explorer has you covered.
 
-Включите отображение скрытых файлов и папок в проводнике своей операционной системы, иначе вы не
-сможете выбрать и скопировать себе файлы настроек проекта, имена которых начинаются с точки.
+📌 **Key Features:**
 
-## Зависимости
+- 🎟️ **Event Cards**: Visually appealing cards display detailed event information, making it easy to find exciting opportunities.
 
-На компьютере должена быть установлена LTS-версия [Node.js](https://nodejs.org/en/) со всеми
-дополнительными инструментами кроме **Chocolatey** - его ставить не нужно.
+- 🔍 **Keyword Search**: Find events that match your interests using our powerful keyword search feature.
 
-## Перед началом работы
+- 🌐 **Country Filter**: Narrow down your search by filtering events based on the country or region that piques your curiosity.
 
-Один раз на проект установить все зависимости.
+- 🎨 **Neat Design**: Our user-friendly and elegant design ensures a seamless browsing experience.
 
-```shell
-npm ci
-```
+🛠️ **Tech Stack:**
 
-### Разработка
+- Frontend: HTML, CSS, JavaScript
+- API Integration
 
-Запустить режим разработки.
+🚀 **Get Started:**
 
-```shell
-npm run dev
-```
+Visit our live website [here](https://elena040683.github.io/team-project-find-best-events/) to explore events or dive into the code by cloning this repository.
 
-Во вкладке браузера перейти по адресу [http://localhost:1234](http://localhost:1234).
+📄 **License:**
 
-### Деплой
+This project is licensed under the MIT licens.
 
-Сборка будет автоматически собирать и деплоить продакшен версию проекта на GitHub Pages, в ветку
-`gh-pages`, каждый раз когда обновляется ветка `main`. Например, после прямого пуша или принятого
-пул-реквеста. Для этого необходимо в файле `package.json` отредактировать поле `homepage` и скрипт
-`build`, заменив `имя_пользователя` и `имя_репозитория` на свои.
-
-```json
-"homepage": "https://имя_пользователя.github.io/имя_репозитория",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /имя_репозитория/"
-},
-```
-
-На всякий случай стоит зайти в настройки репозитория `Settings` > `Pages` и убедиться что продакшен
-версии файлов раздаются из папки `/root` ветки `gh-pages`.
-
-Через какое-то время живую страницу можно будет посмотреть по адресу указанному в отредактированном
-свойстве `homepage`, например
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
-
-## Файлы и папки
-
-- Все паршалы файлов стилей должны лежать в папке `src/sass` и импортироваться в
-  `src/sass/main.scss`
-- Изображения добавляйте в папку `src/images`, заранее оптимизировав их. Сборщик просто копирует
-  используемые изображения чтобы не нагружать систему оптимизацией картинок, так как на слабых
-  компьютерах это может занять много времени.
+Let's explore the world of events together! 🌟
